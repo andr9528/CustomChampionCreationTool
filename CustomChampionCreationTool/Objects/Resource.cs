@@ -13,12 +13,13 @@ namespace CustomChampionCreationTool.Objects
         public string Name { get; set; } // name of the Resource. ie Resourseless, Ferocity, Mana...
         public int ID{ get; set; } // a unique value between all resources
 
-        public Resource(int maxValue, string name, int id, int minValue = 0)
+        public Resource()
         {
-            MaxValue = maxValue;
-            Name = name;
-            ID = id;
-            MinValue = MinValue;
+        }
+
+        public string ToStringR()
+        {
+            return Name;
         }
     }
 }

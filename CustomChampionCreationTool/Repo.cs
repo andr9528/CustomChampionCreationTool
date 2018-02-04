@@ -16,20 +16,6 @@ namespace CustomChampionCreationTool
     public static class Repo
     {
         /*
-         * string[] restrict = new string[4];
-
-            restrict[2] = "Resources";
-            resourcesTable = repo.GetSchema("Tables", restrict);
-
-            restrict[2] = "Champions";
-            championsTable = repo.GetSchema("Tables", restrict);
-
-            restrict[2] = "Abilities";
-         *  abilitiesTable = repo.GetSchema("Tables", restrict);
-         * 
-         * /
-
-        /*
          * Format for Resources in the Repo
          *      [ID] [Name] [MinValue] [MaxValue]
          * 
@@ -40,12 +26,8 @@ namespace CustomChampionCreationTool
         private static string connStr = Properties.Settings.Default.RepoConnectionString;
         private static SqlConnection repo;
 
-        private static DataTable resourcesTable;
-        private static DataTable championsTable;
-        private static DataTable abilitiesTable;
-
-        private static DataTable table;
-        private static List<string> tables = new List<string>();
+        private static DataTable table; 
+        private static List<string> tables = new List<string>(); // 0 = Resources, 1 = Champions, 2 = Abilities
 
         public static void Initialize()
         {
@@ -63,16 +45,6 @@ namespace CustomChampionCreationTool
                 tables.Add(tablename);
             }
 
-            string[] restrict = new string[4];
-
-            restrict[2] = tables[0];
-            resourcesTable = repo.GetSchema("Tables", restrict);
-
-            restrict[2] = tables[1];
-            championsTable = repo.GetSchema("Tables", restrict);
-
-            restrict[2] = tables[2];
-            abilitiesTable = repo.GetSchema("Tables", restrict);
         }
 
         public static List<Ability> GetAbilities()
@@ -86,14 +58,21 @@ namespace CustomChampionCreationTool
         {
             List<Resource> outputList = new List<Resource>();
 
-            Resource reCreate = new Resource(0, "dummy", 0, 0);
+            string query = "SELECT * FROM dbo." + tables[0];
+            SqlDataAdapter adapt = new SqlDataAdapter(query, repo);
 
-            foreach (DataRow row in resourcesTable.Rows)
+            DataSet resources = new DataSet();
+            adapt.Fill(resources, tables[0]);
+
+            foreach (DataRow row in resources.Tables[tables[0]].Rows)
             {
-                reCreate.MaxValue = int.Parse(row["MaxValue"].ToString());
-                reCreate.Name = row["Name"].ToString();
-                reCreate.ID = int.Parse(row["Id"].ToString());
-                reCreate.MinValue = int.Parse(row["MinValue"].ToString());
+                Resource reCreate = new Resource()
+                {
+                    MaxValue = (int)row["MaxValue"],
+                    Name = row["Name"].ToString().Trim(' '),
+                    ID = (int)row["Id"],
+                    MinValue = (int)row["MinValue"]
+                };
 
                 outputList.Add(reCreate);
             }
@@ -105,15 +84,17 @@ namespace CustomChampionCreationTool
         {
             string output = "";
 
-            foreach (DataRow row in resourcesTable.Rows)
-            {
-                output += row[2];
-            }
+            
+
             return output;
         }
         public static List<string> Test2()
         {
-            return tables;
+            List<string> output = new List<string>();
+
+            output = tables;
+
+            return output;
         }
     }
 }
