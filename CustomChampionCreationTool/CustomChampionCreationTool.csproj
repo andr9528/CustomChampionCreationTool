@@ -67,8 +67,17 @@
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NewAbility.xaml.cs">
+      <DependentUpon>NewAbility.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NewChamp.xaml.cs">
       <DependentUpon>NewChamp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewResource.xaml.cs">
+      <DependentUpon>NewResource.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShowAbility.xaml.cs">
+      <DependentUpon>ShowAbility.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShowChamps.xaml.cs">
       <DependentUpon>ShowChamps.xaml</DependentUpon>
@@ -80,7 +89,14 @@
     <Compile Include="Objects\Ability.cs" />
     <Compile Include="Objects\Champion.cs" />
     <Compile Include="Objects\Resource.cs" />
+    <Compile Include="Views\ShowResource.xaml.cs">
+      <DependentUpon>ShowResource.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewAbility.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -88,7 +104,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\NewResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShowAbility.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ShowChamps.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShowResource.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

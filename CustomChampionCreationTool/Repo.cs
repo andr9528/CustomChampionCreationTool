@@ -61,23 +61,41 @@ namespace CustomChampionCreationTool
             string query = "SELECT * FROM dbo." + tables[0];
             SqlDataAdapter adapt = new SqlDataAdapter(query, repo);
 
-            DataSet resources = new DataSet();
-            adapt.Fill(resources, tables[0]);
+            DataSet database = new DataSet();
+            adapt.Fill(database, tables[0]);
 
-            foreach (DataRow row in resources.Tables[tables[0]].Rows)
+            foreach (DataRow row in database.Tables[tables[0]].Rows)
             {
                 Resource reCreate = new Resource()
                 {
                     MaxValue = (int)row["MaxValue"],
                     Name = row["Name"].ToString().Trim(' '),
                     ID = (int)row["Id"],
-                    MinValue = (int)row["MinValue"]
+                    MinValue = (int)row["MinValue"],
+                    MaxedAtStart = (bool)row["MaxedAtStart"] 
                 };
 
                 outputList.Add(reCreate);
             }
 
             return outputList;
+        }
+
+        public static void NewResource(Resource source)
+        {
+            string query = "INSERT INTO dbo." + tables[0]
+                + "(Id, Name, MaxValue, MinValue, MaxedAtStart) VALUES "
+                + "(@Id, @Name, @MaxValue, @MinValue, @MaxedAtStart)";
+
+            SqlCommand cmd = new SqlCommand(query, repo);
+
+            cmd.Parameters.AddWithValue("@Id", source.ID);
+            cmd.Parameters.AddWithValue("@Name", source.Name);
+            cmd.Parameters.AddWithValue("@MaxValue", source.MaxValue);
+            cmd.Parameters.AddWithValue("@MinValue", source.MinValue);
+            cmd.Parameters.AddWithValue("@MaxedAtStart", source.MaxedAtStart);
+
+            cmd.ExecuteNonQuery();
         }
 
         public static string Test1()
