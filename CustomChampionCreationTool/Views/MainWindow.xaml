@@ -1,0 +1,19 @@
+﻿<Window x:Class="CustomChampionCreationTool.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CustomChampionCreationTool.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="285" Width="516">
+    <Grid Margin="0,0,2,0">
+        <Grid HorizontalAlignment="Left" Height="254" VerticalAlignment="Top" Width="506">
+            <Button Content="New Champion" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Name="NewChamp" Click="NewChamp_Click"/>
+            <Button Content="Show Champions" HorizontalAlignment="Left" Margin="138,10,0,0" VerticalAlignment="Top" Width="120" Name="ShowChamps" Click="ShowChamps_Click"/>
+            <Button Content="Exit" HorizontalAlignment="Left" Margin="422,10,0,0" VerticalAlignment="Top" Width="75" Name="Exit" Click="Exit_Click"/>
+            <Button Content="Creators" HorizontalAlignment="Left" Margin="422,210,0,0" VerticalAlignment="Top" Width="75" Name="ShowCreators" Click="ShowCreators_Click" RenderTransformOrigin="0.48,1.7"/>
+        </Grid>
+    </Grid>
+</Window>
+    
+    
