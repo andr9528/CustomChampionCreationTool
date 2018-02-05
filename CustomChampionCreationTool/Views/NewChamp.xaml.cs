@@ -252,6 +252,10 @@ namespace CustomChampionCreationTool.Views
 
         private Ability ShowAbility(Ability output)
         {
+            ShowAbility showAbility = new ShowAbility();
+            showAbility.Initialize(output);
+            showAbility.ShowDialog();
+
             UpdateAvailableAbilities();
 
             output = abilitiesList.Find(x => x.ID == output.ID);

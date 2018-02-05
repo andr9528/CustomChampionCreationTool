@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CustomChampionCreationTool.Objects;
 
 namespace CustomChampionCreationTool.Views
 {
@@ -22,6 +23,11 @@ namespace CustomChampionCreationTool.Views
         public ShowAbility()
         {
             InitializeComponent();
+        }
+
+        internal void Initialize(Ability output)
+        {
+            throw new NotImplementedException();
         }
     }
 }
