@@ -8,5 +8,6 @@ namespace CustomChampionCreationTool.Objects
 {
     public class Ability
     {
+        public int ID { get; internal set; }
     }
 }

@@ -23,5 +23,10 @@ namespace CustomChampionCreationTool.Views
         {
             InitializeComponent();
         }
+
+        internal void Initialize(NewChamp.AbilitySlot slot)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
