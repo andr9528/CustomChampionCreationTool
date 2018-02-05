@@ -22,7 +22,8 @@ namespace CustomChampionCreationTool
          * 
          * 
          * */
-        private static string repoLoca = @"C:\Users\andre\Dropbox\Game Idées\CustomChampionCreationTool\CustomChampionCreationTool";
+        private static string repoLocaDesk = @"C:\Users\andre\Dropbox\Game Idées\CustomChampionCreationTool\CustomChampionCreationTool";
+        private static string repoLocaLap = @"C:\Users\Andre\Dropbox\Game Idées\CustomChampionCreationTool\CustomChampionCreationTool";
         private static string connStr = Properties.Settings.Default.RepoConnectionString;
         private static SqlConnection repo;
 
@@ -31,7 +32,7 @@ namespace CustomChampionCreationTool
 
         public static void Initialize()
         {
-            AppDomain.CurrentDomain.SetData("DataDirectory", repoLoca);
+            AppDomain.CurrentDomain.SetData("DataDirectory", repoLocaLap);
 
             repo = new SqlConnection(connStr);
 

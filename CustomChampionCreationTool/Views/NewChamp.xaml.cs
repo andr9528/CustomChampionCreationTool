@@ -79,5 +79,14 @@ namespace CustomChampionCreationTool.Views
             }
         }
 
+        private void ShowResource_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteResource_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
