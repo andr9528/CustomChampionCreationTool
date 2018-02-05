@@ -19,14 +19,16 @@ namespace CustomChampionCreationTool.Views
     /// </summary>
     public partial class NewAbility : Window
     {
+        Repo.AbilitySlot Slot;
+
         public NewAbility()
         {
             InitializeComponent();
         }
 
-        internal void Initialize(NewChamp.AbilitySlot slot)
+        internal void Initialize(Repo.AbilitySlot slot)
         {
-            throw new NotImplementedException();
+            Slot = slot;
         }
     }
 }

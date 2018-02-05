@@ -15,13 +15,7 @@ namespace CustomChampionCreationTool
 {
     public static class Repo
     {
-        /*
-         * Format for Resources in the Repo
-         *      [ID] [Name] [MinValue] [MaxValue]
-         * 
-         * 
-         * 
-         * */
+        public enum AbilitySlot { Passive, Q, W, E, R }
         private static string repoLocaDesk = @"C:\Users\andre\Dropbox\Game Idées\CustomChampionCreationTool\CustomChampionCreationTool";
         private static string repoLocaLap = @"C:\Users\Andre\Dropbox\Game Idées\CustomChampionCreationTool\CustomChampionCreationTool";
         private static string connStr = Properties.Settings.Default.RepoConnectionString;
@@ -32,7 +26,7 @@ namespace CustomChampionCreationTool
 
         public static void Initialize()
         {
-            AppDomain.CurrentDomain.SetData("DataDirectory", repoLocaLap);
+            AppDomain.CurrentDomain.SetData("DataDirectory", repoLocaDesk);
 
             repo = new SqlConnection(connStr);
 
@@ -45,7 +39,6 @@ namespace CustomChampionCreationTool
                 string tablename = (string)row[2];
                 tables.Add(tablename);
             }
-
         }
 
         public static List<Ability> GetAbilities()

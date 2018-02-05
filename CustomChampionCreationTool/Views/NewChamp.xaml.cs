@@ -24,7 +24,7 @@ namespace CustomChampionCreationTool.Views
         List<string> resourceNamesList = new List<string>();
         List<Resource> resourceList;
         List<Ability> abilitiesList;
-        public enum AbilitySlot {Passive, Q, W, E, R }
+        
         Champion champ = new Champion();
 
         public NewChamp()
@@ -106,15 +106,20 @@ namespace CustomChampionCreationTool.Views
         {
             if (champ.PassiveAbility == null)
             {
-                Ability ability = NewAbility(AbilitySlot.Passive);
+                Ability ability = NewAbility(Repo.AbilitySlot.Passive);
 
                 if (ability == null)
                 {
                     MessageBox.Show("Ability Creation cancelled by User", "Message", MessageBoxButton.OK);
                 }
+                else
+                {
+                    champ.PassiveAbility = ability;
+                    PassiveAbilityText.Text = champ.PassiveAbility.Name;
+                    PassiveAbilityButton.Content = "Show Ability";
+                }
 
-                champ.PassiveAbility = ability;
-                PassiveAbilityText.Text = "Show Ability";
+                
             }
             else
             {
@@ -128,7 +133,7 @@ namespace CustomChampionCreationTool.Views
         {
             if (champ.QAbility == null)
             {
-                Ability ability = NewAbility(AbilitySlot.Q);
+                Ability ability = NewAbility(Repo.AbilitySlot.Q);
 
                 if (ability == null)
                 {
@@ -137,7 +142,8 @@ namespace CustomChampionCreationTool.Views
                 else
                 {
                     champ.QAbility = ability;
-                    QAbilityText.Text = "Show Ability";
+                    QAbilityText.Text = champ.QAbility.Name;
+                    QAbilityButton.Content = "Show Ability";
                 } 
             }
             else
@@ -154,7 +160,7 @@ namespace CustomChampionCreationTool.Views
         {
             if (champ.WAbility == null)
             {
-                Ability ability = NewAbility(AbilitySlot.W);
+                Ability ability = NewAbility(Repo.AbilitySlot.W);
 
                 if (ability == null)
                 {
@@ -163,7 +169,8 @@ namespace CustomChampionCreationTool.Views
                 else
                 {
                     champ.WAbility = ability;
-                    WAbilityText.Text = "Show Ability";
+                    WAbilityText.Text = champ.WAbility.Name;
+                    WAbilityButton.Content = "Show Ability";
                 } 
             }
             else
@@ -180,7 +187,7 @@ namespace CustomChampionCreationTool.Views
         {
             if (champ.EAbility == null)
             {
-                Ability ability = NewAbility(AbilitySlot.E);
+                Ability ability = NewAbility(Repo.AbilitySlot.E);
 
                 if (ability == null)
                 {
@@ -189,7 +196,8 @@ namespace CustomChampionCreationTool.Views
                 else
                 {
                     champ.EAbility = ability;
-                    EAbilityText.Text = "Show Ability";
+                    EAbilityText.Text = champ.EAbility.Name;
+                    EAbilityButton.Content = "Show Ability";
                 } 
             }
             else
@@ -206,7 +214,7 @@ namespace CustomChampionCreationTool.Views
         {
             if (champ.RAbility == null)
             {
-                Ability newAbility = NewAbility(AbilitySlot.R);
+                Ability newAbility = NewAbility(Repo.AbilitySlot.R);
 
                 if (newAbility == null)
                 {
@@ -215,7 +223,8 @@ namespace CustomChampionCreationTool.Views
                 else
                 {
                     champ.RAbility = newAbility;
-                    RAbilityText.Text = "Show Ability";
+                    RAbilityText.Text = champ.RAbility.Name;
+                    RAbilityButton.Content = "Show Ability";
                 }
             }
             else
@@ -230,7 +239,7 @@ namespace CustomChampionCreationTool.Views
             
         }
 
-        private Ability NewAbility(AbilitySlot slot)
+        private Ability NewAbility(Repo.AbilitySlot slot)
         {
             Ability output = null;
             UpdateAvailableAbilities();

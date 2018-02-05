@@ -13,5 +13,6 @@ namespace CustomChampionCreationTool.Objects
         public Ability WAbility { get; internal set; }
         public Ability EAbility { get; internal set; }
         public Ability RAbility { get; internal set; }
+        public int ID { get; set; } // a unique value between all champions.
     }
 }

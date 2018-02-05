@@ -20,14 +20,15 @@ namespace CustomChampionCreationTool.Views
     /// </summary>
     public partial class ShowAbility : Window
     {
+        Ability ability = null;
         public ShowAbility()
         {
             InitializeComponent();
         }
 
-        internal void Initialize(Ability output)
+        internal void Initialize(Ability _ability)
         {
-            throw new NotImplementedException();
+            ability = _ability;
         }
     }
 }
