@@ -23,6 +23,7 @@ namespace CustomChampionCreationTool.Views
     {
         List<string> resourceNamesList = new List<string>();
         List<Resource> resourceList;
+        Champion champ = new Champion();
 
         public NewChamp()
         {
@@ -30,6 +31,12 @@ namespace CustomChampionCreationTool.Views
             Title = "New Champion";
 
             UpdateAvailableResources();
+
+            PassiveAbilityButton.Content = "New Ability";
+            QAbilityButton.Content = "New Ability";
+            WAbilityButton.Content = "New Ability";
+            EAbilityButton.Content = "New Ability";
+            RAbilityButton.Content = "New Ability";
 
             ResourceType.ItemsSource = resourceNamesList;
             ResourceType.SelectedIndex = 0;
@@ -85,6 +92,31 @@ namespace CustomChampionCreationTool.Views
         }
 
         private void DeleteResource_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PassiveAbilityButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void QAbilityButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void WAbilityButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EAbilityButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RAbilityButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

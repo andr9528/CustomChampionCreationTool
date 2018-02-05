@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:CustomChampionCreationTool="clr-namespace:CustomChampionCreationTool" x:Class="CustomChampionCreationTool.Views.NewChamp"
         mc:Ignorable="d"
-        Title="NewChamp" Height="600" Width="900">
+        Title="NewChamp" Height="600" Width="1000">
     <Grid>
-        <Grid HorizontalAlignment="Left" Height="569" VerticalAlignment="Top" Width="892" >
+        <Grid HorizontalAlignment="Left" Height="569" VerticalAlignment="Top" Width="982" >
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -33,11 +34,17 @@
             </Grid.RowDefinitions>
 
             <Button Name="ShowResource" Content="Show Resource" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Width="105" Click="ShowResource_Click"/>
-            <Button Name="CloseWindow" Content="Close" HorizontalAlignment="Center" Grid.Row="12" Grid.Column="5" VerticalAlignment="Center" Width="75" Click="CloseWindow_Click"/>
-            <Button Name="Create" Content="Create" HorizontalAlignment="Center" Grid.Row="12" Grid.Column="4" VerticalAlignment="Center" Width="75" Click="Create_Click"/>
+            <Button Name="CloseWindow" Content="Close" HorizontalAlignment="Center" Grid.Row="12" Grid.Column="6" VerticalAlignment="Center" Width="75" Click="CloseWindow_Click"/>
+            <Button Name="Create" Content="Create" HorizontalAlignment="Center" Grid.Row="12" Grid.Column="5" VerticalAlignment="Center" Width="75" Click="Create_Click"/>
             <Button Name="NewResource" Content="New Resource" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Width="105" Click="NewResource_Click"/>
             <Button Name="DeleteResource" Content="Delete Resource" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" Width="105" Click="DeleteResource_Click"/>
 
+            <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="105" Name="PassiveAbilityButton" Click="PassiveAbilityButton_Click"/>
+            <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="105" Name="QAbilityButton" Click="QAbilityButton_Click"/>
+            <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="105" Name="WAbilityButton" Click="WAbilityButton_Click"/>
+            <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Width="105" Name="EAbilityButton" Click="EAbilityButton_Click"/>
+            <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="105" Name="RAbilityButton" Click="RAbilityButton_Click"/>
+            
             <ComboBox Name="ResourceType" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Width="130" SelectionChanged="ResourceType_SelectionChanged" />
 
             <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" Text="Resource Type" Width="130" TextAlignment="Center" IsReadOnly="True" ToolTip="What Resource does this Champion Use?"/>
@@ -64,6 +71,19 @@
             <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Name="HealthRegeneration" Width="130" TextAlignment="Center"/>
             <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Name="ResourceRegeneration" Width="130" TextAlignment="Center"/>
             <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="11" Grid.Column="1" TextWrapping="Wrap" Name="Movespeed" Width="130" TextAlignment="Center"/>
+
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="2" Grid.Column="3" TextWrapping="Wrap" Text="Passive Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="3" Grid.Column="3" TextWrapping="Wrap" Text="Q Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="4" Grid.Column="3" TextWrapping="Wrap" Text="W Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="5" Grid.Column="3" TextWrapping="Wrap" Text="E Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="6" Grid.Column="3" TextWrapping="Wrap" Text="R Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
+
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="PassiveAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="QAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="WAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="EAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="RAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
+            
 
 
         </Grid>
