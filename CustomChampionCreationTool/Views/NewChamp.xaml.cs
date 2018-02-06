@@ -124,9 +124,16 @@ namespace CustomChampionCreationTool.Views
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete the selected Resource?", "Warning", MessageBoxButton.YesNo);
 
-            if (result == MessageBoxResult.Yes)
+            try
             {
-                Repo.DeleteResource(resourceList[ResourceType.SelectedIndex]);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Repo.DeleteResource(resourceList[ResourceType.SelectedIndex]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong - " + ex.Message, "Error" , MessageBoxButton.OK);
             }
         }
 
@@ -207,8 +214,6 @@ namespace CustomChampionCreationTool.Views
 
                 champ.WAbility = showAbility;
             }
-
-            
         }
 
         private void EAbilityButton_Click(object sender, RoutedEventArgs e)
