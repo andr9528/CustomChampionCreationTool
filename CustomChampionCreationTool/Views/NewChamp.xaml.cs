@@ -51,7 +51,7 @@ namespace CustomChampionCreationTool.Views
 
         }
 
-        private void CloseWindow_Click(object sender, RoutedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to close without saveing?", "Warning", MessageBoxButton.YesNo);
 
@@ -73,9 +73,28 @@ namespace CustomChampionCreationTool.Views
 
         private void NewResource_Click(object sender, RoutedEventArgs e)
         {
+            UpdateAvailableResources();
 
+            int before = resourceList.Count;
+
+            NewResource newResource = new NewResource();
+            newResource.ShowDialog();
 
             UpdateAvailableResources();
+
+            int after = resourceList.Count;
+
+            if (after == before + 1)
+            {
+                UpdateAvailableResources();
+                ResourceType.ItemsSource = resourceList; // needed to force update the dropdown menu.
+                ResourceType.ItemsSource = resourceNamesList;
+                ResourceType.SelectedIndex = resourceList.Count - 1; 
+            }
+            else
+            {
+                MessageBox.Show("Resource Creation cancelled by User", "Message", MessageBoxButton.OK);
+            }
         }
         private void UpdateAvailableResources()
         {
@@ -94,12 +113,21 @@ namespace CustomChampionCreationTool.Views
 
         private void ShowResource_Click(object sender, RoutedEventArgs e)
         {
+            ShowResource show = new ShowResource();
+            show.Initialize(resourceList[ResourceType.SelectedIndex]);
 
+            show.ShowDialog();
+            UpdateAvailableResources();
         }
 
         private void DeleteResource_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete the selected Resource?", "Warning", MessageBoxButton.YesNo);
 
+            if (result == MessageBoxResult.Yes)
+            {
+                Repo.DeleteResource(resourceList[ResourceType.SelectedIndex]);
+            }
         }
 
         private void PassiveAbilityButton_Click(object sender, RoutedEventArgs e)

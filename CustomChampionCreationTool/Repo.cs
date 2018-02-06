@@ -24,7 +24,7 @@ namespace CustomChampionCreationTool
         private static DataTable table; 
         private static List<string> tables = new List<string>(); // 0 = Resources, 1 = Champions, 2 = Abilities
 
-        public static void Initialize()
+        internal static void Initialize()
         {
             AppDomain.CurrentDomain.SetData("DataDirectory", repoLocaDesk);
 
@@ -41,14 +41,30 @@ namespace CustomChampionCreationTool
             }
         }
 
-        public static List<Ability> GetAbilities()
+        internal static void UpdateResource(Resource source)
+        {
+            string query = @"UPDATE " + tables[0] + " (Name, MaxValue, MinValue, MaxedAtStart) "
+                + "VALUES (@Name, @MaxValue, @MinValue, @MaxedAtStart) WHERE Id='" + source.ID + "'";
+
+            SqlCommand cmd = new SqlCommand(query, repo);
+
+            cmd.Parameters.AddWithValue("@Name", source.Name);
+            cmd.Parameters.AddWithValue("@MaxValue", source.MaxValue);
+            cmd.Parameters.AddWithValue("@MinValue", source.MinValue);
+            cmd.Parameters.AddWithValue("@MaxedAtStart", source.MaxedAtStart);
+
+            cmd.ExecuteNonQuery();
+        }
+
+
+        internal static List<Ability> GetAbilities()
         {
             List<Ability> outputList = new List<Ability>();
 
             return outputList;
         }
 
-        public static List<Resource> GetResources()
+        internal static List<Resource> GetResources()
         {
             List<Resource> outputList = new List<Resource>();
 
@@ -75,7 +91,7 @@ namespace CustomChampionCreationTool
             return outputList;
         }
 
-        public static void NewResource(Resource source)
+        internal static void NewResource(Resource source)
         {
             string query = "INSERT INTO dbo." + tables[0]
                 + "(Id, Name, MaxValue, MinValue, MaxedAtStart) VALUES "
@@ -91,8 +107,15 @@ namespace CustomChampionCreationTool
 
             cmd.ExecuteNonQuery();
         }
+        internal static void DeleteResource(Resource source)
+        {
+            string query = @"DELETE FROM " + tables[0] + " WHERE Id='" + source.ID + "'";
 
-        public static string Test1()
+            SqlCommand cmd = new SqlCommand(query, repo);
+            cmd.ExecuteNonQuery();
+        }
+
+        internal static string Test1()
         {
             string output = "";
 
@@ -100,7 +123,7 @@ namespace CustomChampionCreationTool
 
             return output;
         }
-        public static List<string> Test2()
+        internal static List<string> Test2()
         {
             List<string> output = new List<string>();
 

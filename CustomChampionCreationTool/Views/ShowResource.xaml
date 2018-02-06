@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomChampionCreationTool.Views"
         mc:Ignorable="d"
-        Title="ShowResource" Height="300" Width="300">
+        Title="ShowResource" Height="400" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+
+        </Grid.RowDefinitions>
+        <Button Name="GoodExit" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Width="74" Click="GoodExit_Click"/>
+        <Button Name="BadExit" Grid.Column="3" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Width="74" Click="BadExit_Click" Content="Cancel"/>
+
+        <TextBox HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Text="Start Game At Max Value" VerticalAlignment="Center" Width="160" IsReadOnly="True" TextAlignment="Center" ToolTip="Weather or not Champions with this Resource start the game with their current max being the max"/>
+        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="1" TextWrapping="Wrap" Text="Name" VerticalAlignment="Center" Width="160" IsReadOnly="True" TextAlignment="Center"/>
+        <TextBox HorizontalAlignment="Center" Height="24" Grid.Row="2" TextWrapping="Wrap" Text="Max Value" VerticalAlignment="Center" Width="160" IsReadOnly="True" TextAlignment="Center" ToolTip="-1 Indicates no limit of Value, Only accepts hole Numbers"/>
+        <TextBox HorizontalAlignment="Center" Height="23" Grid.Row="3" TextWrapping="Wrap" Text="Min Value" VerticalAlignment="Center" Width="160" IsReadOnly="True" TextAlignment="Center" ToolTip="Only accepts hole Numbers"/>
+
+        <TextBox Grid.Column="1" HorizontalAlignment="Center" Height="23" Grid.Row="1" TextWrapping="Wrap" Name="Name" VerticalAlignment="Center" Width="160" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Center" Height="23" Grid.Row="2" TextWrapping="Wrap" Name="MaxValue" VerticalAlignment="Center" Width="160" TextAlignment="Center"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Center" Height="23" Grid.Row="3" TextWrapping="Wrap" Name="MinValue" VerticalAlignment="Center" Width="160" TextAlignment="Center"/>
+
+        <CheckBox Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Name="StartMaxed"/>
+        <CheckBox Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Name="EditMode" Content="Edit Mode Toogle" Checked="EditMode_Checked" Unchecked="EditMode_Unchecked"/>
+
     </Grid>
 </Window>

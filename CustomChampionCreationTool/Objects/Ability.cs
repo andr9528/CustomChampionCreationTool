@@ -14,6 +14,7 @@ namespace CustomChampionCreationTool.Objects
         public Repo.AbilitySlot Slot { get; internal set; }
 
         public bool HaveActive { get; internal set; }
+        public bool IsToogleAble { get; internal set; }
         public string DescriptionNorm { get; internal set; }
         public string DamageNorm { get; internal set; }
         public string CooldownNorm { get; internal set; }
