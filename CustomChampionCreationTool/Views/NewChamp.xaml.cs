@@ -39,6 +39,10 @@ namespace CustomChampionCreationTool.Views
             WAbilityButton.Content = "New Ability";
             EAbilityButton.Content = "New Ability";
             RAbilityButton.Content = "New Ability";
+            QAltAbilityButton.Content = "New Ability";
+            WAltAbilityButton.Content = "New Ability";
+            EAltAbilityButton.Content = "New Ability";
+            RAltAbilityButton.Content = "New Ability";
 
             ResourceType.ItemsSource = resourceNamesList;
             ResourceType.SelectedIndex = 0;
@@ -303,6 +307,26 @@ namespace CustomChampionCreationTool.Views
             output = abilitiesList.Find(x => x.ID == output.ID);
 
             return output;
+        }
+
+        private void QAltAbilityButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void WAltAbilityButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EAltAbilityButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RAltAbilityButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

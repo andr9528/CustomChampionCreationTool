@@ -44,6 +44,10 @@
             <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="105" Name="WAbilityButton" Click="WAbilityButton_Click"/>
             <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Width="105" Name="EAbilityButton" Click="EAbilityButton_Click"/>
             <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="105" Name="RAbilityButton" Click="RAbilityButton_Click"/>
+            <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Width="105" Name="QAltAbilityButton" Click="QAltAbilityButton_Click"/>
+            <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Width="105" Name="WAltAbilityButton" Click="WAltAbilityButton_Click"/>
+            <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Center" Width="105" Name="EAltAbilityButton" Click="EAltAbilityButton_Click"/>
+            <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="10" VerticalAlignment="Center" Width="105" Name="RAltAbilityButton" Click="RAltAbilityButton_Click"/>
             
             <ComboBox Name="ResourceType" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Width="130" SelectionChanged="ResourceType_SelectionChanged" />
 
@@ -83,7 +87,17 @@
             <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="WAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
             <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="EAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
             <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="RAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
-            
+
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="7" Grid.Column="3" TextWrapping="Wrap" Text="Alternativ Q Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="8" Grid.Column="3" TextWrapping="Wrap" Text="Alternativ W Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="9" Grid.Column="3" TextWrapping="Wrap" Text="Alternativ E Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="10" Grid.Column="3" TextWrapping="Wrap" Text="Alternativ R Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
+
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="QAltAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="WAltAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="9" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="EAltAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="10" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="RAltAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
+
 
 
         </Grid>
