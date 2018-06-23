@@ -15,24 +15,24 @@ namespace CustomChampionCreationTool.Objects
 
         public bool HaveActive { get; internal set; }
         public bool IsToogleAble { get; internal set; }
-        public string DescriptionNorm { get; internal set; }
-        public string DamageNorm { get; internal set; }
-        public string CooldownNorm { get; internal set; }
-        public int RangeNorm { get; internal set; }
-        public int ResourceCostNorm { get; internal set; }
+        public string DescriptionAct { get; internal set; }
+        public string DamageAct { get; internal set; }
+        public string CooldownAct { get; internal set; }
+        public string RangeAct { get; internal set; }
+        public string ResourceCostAct { get; internal set; }
         
-        public bool HaveEmpowered { get; internal set; }
-        public string DescriptionEmp { get; internal set; }
-        public string DamageEmp { get; internal set; }
-        public string CooldownEmp { get; internal set; }
-        public int RangeEmp { get; internal set; }
-        public int ResourceCostEmp { get; internal set; }
+        public bool HaveEmpoweredOrAlternative { get; internal set; }
+        public string DescriptionEmpAlt { get; internal set; }
+        public string DamageEmpAlt { get; internal set; }
+        public string CooldownEmpAlt { get; internal set; }
+        public string RangeEmpAlt { get; internal set; }
+        public string ResourceCostEmpAlt { get; internal set; }
 
         public bool HavePassive { get; internal set; }
-        public string DescriptionPass { get; internal set; }
-        public int RangePass { get; internal set; }
-        public string DamagePass { get; internal set; }
-        public string CooldownPass { get; internal set; }
+        public string DescriptionPas { get; internal set; }
+        public string RangePas { get; internal set; }
+        public string DamagePas { get; internal set; }
+        public string CooldownPas { get; internal set; }
 
         public Ability()
         {

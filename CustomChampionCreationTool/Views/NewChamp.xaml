@@ -31,11 +31,12 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
             <Button Name="ShowResource" Content="Show Resource" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Width="105" Click="ShowResource_Click"/>
-            <Button Name="Cancel" Content="Cancel" HorizontalAlignment="Center" Grid.Row="12" Grid.Column="6" VerticalAlignment="Center" Width="75" Click="Cancel_Click"/>
-            <Button Name="Create" Content="Create" HorizontalAlignment="Center" Grid.Row="12" Grid.Column="5" VerticalAlignment="Center" Width="75" Click="Create_Click"/>
+            <Button Name="Cancel" Content="Cancel" HorizontalAlignment="Center" Grid.Row="13" Grid.Column="6" VerticalAlignment="Center" Width="75" Click="Cancel_Click"/>
+            <Button Name="Create" Content="Create" HorizontalAlignment="Center" Grid.Row="13" Grid.Column="5" VerticalAlignment="Center" Width="75" Click="Create_Click"/>
             <Button Name="NewResource" Content="New Resource" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Width="105" Click="NewResource_Click"/>
             <Button Name="DeleteResource" Content="Delete Resource" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="4" VerticalAlignment="Center" Width="105" Click="DeleteResource_Click"/>
 
@@ -44,59 +45,62 @@
             <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="105" Name="WAbilityButton" Click="WAbilityButton_Click"/>
             <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Width="105" Name="EAbilityButton" Click="EAbilityButton_Click"/>
             <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="105" Name="RAbilityButton" Click="RAbilityButton_Click"/>
-            <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Width="105" Name="QAltAbilityButton" Click="QAltAbilityButton_Click"/>
-            <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Width="105" Name="WAltAbilityButton" Click="WAltAbilityButton_Click"/>
-            <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Center" Width="105" Name="EAltAbilityButton" Click="EAltAbilityButton_Click"/>
-            <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="10" VerticalAlignment="Center" Width="105" Name="RAltAbilityButton" Click="RAltAbilityButton_Click"/>
-            
+
             <ComboBox Name="ResourceType" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Width="130" SelectionChanged="ResourceType_SelectionChanged" />
 
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" Text="Resource Type" Width="130" TextAlignment="Center" IsReadOnly="True" ToolTip="What Resource does this Champion Use?"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Health" Width="130" TextAlignment="Center" IsReadOnly="True" ToolTip="Format: # - #"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="Resource" Width="130" TextAlignment="Center" IsReadOnly="True" ToolTip="Format: # - #"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" Text="Attack Damage" Width="130" TextAlignment="Center" IsReadOnly="True" ToolTip="Format: #.# - #.#"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="6" Grid.Column="0" TextWrapping="Wrap" Text="Ability Power" Width="130" TextAlignment="Center" IsReadOnly="True" ToolTip="Format: #.# - #.#"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="9" Grid.Column="0" TextWrapping="Wrap" Text="Armor" Width="130" TextAlignment="Center" IsReadOnly="True" ToolTip="Format: #.# - #.#"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="10" Grid.Column="0" TextWrapping="Wrap" Text="Magic Resist" Width="130" TextAlignment="Center" IsReadOnly="True" ToolTip="Format: #.# - #.#"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" Text="Attack Speed" Width="130" TextAlignment="Center" IsReadOnly="True" ToolTip="Format: #.# - #.#"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="8" Grid.Column="0" TextWrapping="Wrap" Text="Range" Width="130" TextAlignment="Center" IsReadOnly="True" ToolTip="Format: # - #"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" Text="Health Regeneration" Width="130" TextAlignment="Center" IsReadOnly="True" ToolTip="Format: #.# - #.#"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" Text="Resource Regeneration" Width="130" TextAlignment="Center" IsReadOnly="True" ToolTip="Format: #.# - #.#"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="11" Grid.Column="0" TextWrapping="Wrap" Text="Movespeed" Width="130" TextAlignment="Center" IsReadOnly="True" ToolTip="Format: # - #"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" Text="Resource Type" Width="130" TextAlignment="Center" ToolTip="What Resource does this Champion Use?"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Health" Width="130" TextAlignment="Center" ToolTip="Format: # - #"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Text="Resource" Width="130" TextAlignment="Center" ToolTip="Format: Starting #.##, Growth #.##"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" Text="Attack Damage" Width="130" TextAlignment="Center" ToolTip="Format: Starting #.##, Growth #.##"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="6" Grid.Column="0" TextWrapping="Wrap" Text="Ability Power" Width="130" TextAlignment="Center" ToolTip="Format: Starting #.##, Growth #.##"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="10" Grid.Column="0" TextWrapping="Wrap" Text="Armor" Width="130" TextAlignment="Center" ToolTip="Format: Starting #.##, Growth #.##"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="11" Grid.Column="0" TextWrapping="Wrap" Text="Magic Resist" Width="130" TextAlignment="Center" ToolTip="Format: Starting #.##, Growth #.##"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" Text="Attack Speed" Width="130" TextAlignment="Center" ToolTip="Format: Starting #.##, Growth #.##"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="8" Grid.Column="0" TextWrapping="Wrap" Text="Range" Width="130" TextAlignment="Center" ToolTip="Format: Starting #.##, Growth #.##"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" Text="Health Regeneration" Width="130" TextAlignment="Center" ToolTip="Format: Starting #.##, Growth #.##"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" Text="Resource Regeneration" Width="130" TextAlignment="Center" ToolTip="Format: Starting #.##, Growth #.##"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="12" Grid.Column="0" TextWrapping="Wrap" Text="Movespeed" Width="130" TextAlignment="Center" ToolTip="Format: Starting #, Growth #.##"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="9" Grid.Column="0" TextWrapping="Wrap" Text="Critical Strike Chance" Width="130" TextAlignment="Center" ToolTip="Format: Starting #, Growth #.##"/>
 
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Name="Health" Width="130" TextAlignment="Center"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Name="Resource" Width="130" TextAlignment="Center"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Name="AttackDamage" Width="130" TextAlignment="Center"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="6" Grid.Column="1" TextWrapping="Wrap" Name="AbilityPower" Width="130" TextAlignment="Center"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="9" Grid.Column="1" TextWrapping="Wrap" Name="Armor" Width="130" TextAlignment="Center"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="10" Grid.Column="1" TextWrapping="Wrap" Name="MagicResist" Width="130" TextAlignment="Center"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" Name="AttackSpeed" Width="130" TextAlignment="Center"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="8" Grid.Column="1" TextWrapping="Wrap" Name="Range" Width="130" TextAlignment="Center"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Name="HealthRegeneration" Width="130" TextAlignment="Center"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Name="ResourceRegeneration" Width="130" TextAlignment="Center"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="11" Grid.Column="1" TextWrapping="Wrap" Name="Movespeed" Width="130" TextAlignment="Center"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Name="Health" Width="130" TextAlignment="Center" ToolTip="Starting Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Name="Resource" Width="130" TextAlignment="Center" ToolTip="Starting Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Name="AttackDamage" Width="130" TextAlignment="Center" ToolTip="Starting Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="6" Grid.Column="1" TextWrapping="Wrap" Name="AbilityPower" Width="130" TextAlignment="Center" ToolTip="Starting Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="10" Grid.Column="1" TextWrapping="Wrap" Name="Armor" Width="130" TextAlignment="Center" ToolTip="Starting Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="11" Grid.Column="1" TextWrapping="Wrap" Name="MagicResist" Width="130" TextAlignment="Center" ToolTip="Starting Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="7" Grid.Column="1" TextWrapping="Wrap" Name="AttackSpeed" Width="130" TextAlignment="Center" ToolTip="Starting Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="8" Grid.Column="1" TextWrapping="Wrap" Name="Range" Width="130" TextAlignment="Center" ToolTip="Starting Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Name="HealthRegeneration" Width="130" TextAlignment="Center" ToolTip="Starting Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Name="ResourceRegeneration" Width="130" TextAlignment="Center" ToolTip="Starting Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="12" Grid.Column="1" TextWrapping="Wrap" Name="Movespeed" Width="130" TextAlignment="Center" ToolTip="Starting Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="9" Grid.Column="1" TextWrapping="Wrap" Name="CriticalStrikeChance" Width="130" TextAlignment="Center" ToolTip="Starting Value"/>
 
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="2" Grid.Column="3" TextWrapping="Wrap" Text="Passive Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="3" Grid.Column="3" TextWrapping="Wrap" Text="Q Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="4" Grid.Column="3" TextWrapping="Wrap" Text="W Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="5" Grid.Column="3" TextWrapping="Wrap" Text="E Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="6" Grid.Column="3" TextWrapping="Wrap" Text="R Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Name="HealthGrowth" Width="130" TextAlignment="Center" ToolTip="Growth Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" Name="ResourceGrowth" Width="130" TextAlignment="Center" ToolTip="Growth Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="5" Grid.Column="2" TextWrapping="Wrap" Name="AttackDamageGrowth" Width="130" TextAlignment="Center" ToolTip="Growth Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="6" Grid.Column="2" TextWrapping="Wrap" Name="AbilityPowerGrowth" Width="130" TextAlignment="Center" ToolTip="Growth Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="10" Grid.Column="2" TextWrapping="Wrap" Name="ArmorGrowth" Width="130" TextAlignment="Center" ToolTip="Growth Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="11" Grid.Column="2" TextWrapping="Wrap" Name="MagicResistGrowth" Width="130" TextAlignment="Center" ToolTip="Growth Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="7" Grid.Column="2" TextWrapping="Wrap" Name="AttackSpeedGrowth" Width="130" TextAlignment="Center" ToolTip="Growth Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="8" Grid.Column="2" TextWrapping="Wrap" Name="RangeGrowth" Width="130" TextAlignment="Center" ToolTip="Growth Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Name="HealthRegenerationGrowth" Width="130" TextAlignment="Center" ToolTip="Growth Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="4" Grid.Column="2" TextWrapping="Wrap" Name="ResourceRegenerationGrowth" Width="130" TextAlignment="Center" ToolTip="Growth Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="12" Grid.Column="2" TextWrapping="Wrap" Name="MovespeedGrowth" Width="130" TextAlignment="Center" ToolTip="Growth Value"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="9" Grid.Column="2" TextWrapping="Wrap" Name="CriticalStrikeChanceGrowth" Width="130" TextAlignment="Center" ToolTip="Growth Value"/>
 
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="PassiveAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="QAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="WAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="EAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="RAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="2" Grid.Column="3" TextWrapping="Wrap" Text="Passive Ability" Width="130" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="3" Grid.Column="3" TextWrapping="Wrap" Text="Q Ability" Width="130" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="4" Grid.Column="3" TextWrapping="Wrap" Text="W Ability" Width="130" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="5" Grid.Column="3" TextWrapping="Wrap" Text="E Ability" Width="130" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="6" Grid.Column="3" TextWrapping="Wrap" Text="R Ability" Width="130" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="7" Grid.Column="3" TextWrapping="Wrap" Text="Lore" Width="130" TextAlignment="Center"/>
 
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="7" Grid.Column="3" TextWrapping="Wrap" Text="Alternativ Q Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="8" Grid.Column="3" TextWrapping="Wrap" Text="Alternativ W Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="9" Grid.Column="3" TextWrapping="Wrap" Text="Alternativ E Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="10" Grid.Column="3" TextWrapping="Wrap" Text="Alternativ R Ability" Width="130" TextAlignment="Center" IsReadOnly="True"/>
-
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="QAltAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="WAltAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="9" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="EAltAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
-            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="10" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="RAltAbilityText" Width="260" TextAlignment="Center" IsReadOnly="True"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="PassiveAbilityText" Width="260" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="QAbilityText" Width="260" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="WAbilityText" Width="260" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="EAbilityText" Width="260" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="RAbilityText" Width="260" TextAlignment="Center"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="180" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="3" Grid.RowSpan="5" TextWrapping="Wrap" Name="LoreText" Width="400" TextAlignment="Center" AcceptsReturn="True"/>
 
 
 

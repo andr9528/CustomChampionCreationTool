@@ -39,15 +39,9 @@ namespace CustomChampionCreationTool.Views
             WAbilityButton.Content = "New Ability";
             EAbilityButton.Content = "New Ability";
             RAbilityButton.Content = "New Ability";
-            QAltAbilityButton.Content = "New Ability";
-            WAltAbilityButton.Content = "New Ability";
-            EAltAbilityButton.Content = "New Ability";
-            RAltAbilityButton.Content = "New Ability";
 
             ResourceType.ItemsSource = resourceNamesList;
             ResourceType.SelectedIndex = 0;
-
-            //Test.ItemsSource = Repo.Test2();
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
@@ -57,7 +51,7 @@ namespace CustomChampionCreationTool.Views
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to close without saveing?", "Warning", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to close without saving?", "Warning", MessageBoxButton.YesNo);
 
             if (result == MessageBoxResult.Yes)
             {
@@ -145,7 +139,7 @@ namespace CustomChampionCreationTool.Views
         {
             if (champ.PassiveAbility == null)
             {
-                Ability ability = NewAbility(Repo.AbilitySlot.Passive);
+                Ability ability = NewAbility(Repo.AbilitySlot.Passive, ResourceType.SelectedIndex);
 
                 if (ability == null)
                 {
@@ -172,7 +166,7 @@ namespace CustomChampionCreationTool.Views
         {
             if (champ.QAbility == null)
             {
-                Ability ability = NewAbility(Repo.AbilitySlot.Q);
+                Ability ability = NewAbility(Repo.AbilitySlot.Q, ResourceType.SelectedIndex);
 
                 if (ability == null)
                 {
@@ -199,7 +193,7 @@ namespace CustomChampionCreationTool.Views
         {
             if (champ.WAbility == null)
             {
-                Ability ability = NewAbility(Repo.AbilitySlot.W);
+                Ability ability = NewAbility(Repo.AbilitySlot.W, ResourceType.SelectedIndex);
 
                 if (ability == null)
                 {
@@ -224,7 +218,7 @@ namespace CustomChampionCreationTool.Views
         {
             if (champ.EAbility == null)
             {
-                Ability ability = NewAbility(Repo.AbilitySlot.E);
+                Ability ability = NewAbility(Repo.AbilitySlot.E, ResourceType.SelectedIndex);
 
                 if (ability == null)
                 {
@@ -251,7 +245,7 @@ namespace CustomChampionCreationTool.Views
         {
             if (champ.RAbility == null)
             {
-                Ability newAbility = NewAbility(Repo.AbilitySlot.R);
+                Ability newAbility = NewAbility(Repo.AbilitySlot.R, ResourceType.SelectedIndex);
 
                 if (newAbility == null)
                 {
@@ -276,14 +270,14 @@ namespace CustomChampionCreationTool.Views
             
         }
 
-        private Ability NewAbility(Repo.AbilitySlot slot)
+        private Ability NewAbility(Repo.AbilitySlot slot, int typeIndex)
         {
             Ability output = null;
             UpdateAvailableAbilities();
             int before = abilitiesList.Count;
 
             NewAbility newAbility = new NewAbility();
-            newAbility.Initialize(slot);
+            newAbility.Initialize(slot, typeIndex);
             newAbility.ShowDialog();
 
             UpdateAvailableAbilities();
@@ -307,26 +301,6 @@ namespace CustomChampionCreationTool.Views
             output = abilitiesList.Find(x => x.ID == output.ID);
 
             return output;
-        }
-
-        private void QAltAbilityButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void WAltAbilityButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void EAltAbilityButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void RAltAbilityButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

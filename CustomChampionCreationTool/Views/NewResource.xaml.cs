@@ -32,13 +32,23 @@ namespace CustomChampionCreationTool.Views
         {
             try
             {
+                int id;
+                if (resourceList.Count == 0)
+                {
+                    id = 0;
+                }
+                else
+                {
+                    id = resourceList.MaxBy(x => x.ID).ID + 1;
+                }
+
                 Resource dummy = new Resource()
                 {
                     Name = Name.Text,
                     MaxValue = int.Parse(MaxValue.Text),
                     MinValue = int.Parse(MinValue.Text),
                     MaxedAtStart = (bool)StartMaxed.IsChecked,
-                    ID = resourceList.MaxBy(x => x.ID).ID + 1
+                    ID = id
                 };
                 Repo.NewResource(dummy);
 
@@ -53,7 +63,7 @@ namespace CustomChampionCreationTool.Views
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to close without saveing?", "Warning", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to close without saving?", "Warning", MessageBoxButton.YesNo);
 
             if (result == MessageBoxResult.Yes)
             {

@@ -16,23 +16,21 @@ namespace CustomChampionCreationTool
     public static class Repo
     {
         public enum AbilitySlot { Passive, Q, W, E, R }
-        private static string repoLocaDesk = @"C:\Users\andre\Dropbox\Game Idées\CustomChampionCreationTool\CustomChampionCreationTool";
-        private static string repoLocaLap = @"C:\Users\Andre\Dropbox\Game Idées\CustomChampionCreationTool\CustomChampionCreationTool";
-        private static string connStr = Properties.Settings.Default.RepoConnectionString;
+        private static string connStr = "Data Source=ANDRE-PC;Initial Catalog=CustomChampionCreationTool;Integrated Security=True";
         private static SqlConnection repo;
 
-        private static DataTable table; 
+        private static DataTable table;
         private static List<string> tables = new List<string>(); // 0 = Resources, 1 = Champions, 2 = Abilities
+
+        private static List<string> test = new List<string>();
 
         internal static void Initialize()
         {
-            AppDomain.CurrentDomain.SetData("DataDirectory", repoLocaDesk);
-
             repo = new SqlConnection(connStr);
-
+            
             repo.Open();
 
-            table = repo.GetSchema("Tables");
+            table = repo.GetSchema("tables");
 
             foreach (DataRow row in table.Rows)
             {
@@ -43,16 +41,12 @@ namespace CustomChampionCreationTool
 
         internal static void UpdateResource(Resource source)
         {
-            string query = @"UPDATE " + tables[0] + " (Name, MaxValue, MinValue, MaxedAtStart) "
-                + "VALUES (@Name, @MaxValue, @MinValue, @MaxedAtStart) WHERE Id='" + source.ID + "'";
+            string query = String.Format(@"UPDATE {0} SET Name = '{1}', MaxValue = '{2}',"
+             + "MinValue = '{3}', MaxedAtStart = '{4}' WHERE Id='{5}'",
+                tables[0], source.Name, source.MaxValue, source.MinValue, source.MaxedAtStart, source.ID);
 
             SqlCommand cmd = new SqlCommand(query, repo);
-
-            cmd.Parameters.AddWithValue("@Name", source.Name);
-            cmd.Parameters.AddWithValue("@MaxValue", source.MaxValue);
-            cmd.Parameters.AddWithValue("@MinValue", source.MinValue);
-            cmd.Parameters.AddWithValue("@MaxedAtStart", source.MaxedAtStart);
-
+           
             cmd.ExecuteNonQuery();
         }
 
@@ -68,7 +62,7 @@ namespace CustomChampionCreationTool
         {
             List<Resource> outputList = new List<Resource>();
 
-            string query = "SELECT * FROM dbo." + tables[0];
+            string query = String.Format("SELECT * FROM dbo.{0}", tables[0]);
             SqlDataAdapter adapt = new SqlDataAdapter(query, repo);
 
             DataSet database = new DataSet();
@@ -93,43 +87,20 @@ namespace CustomChampionCreationTool
 
         internal static void NewResource(Resource source)
         {
-            string query = "INSERT INTO dbo." + tables[0]
-                + "(Id, Name, MaxValue, MinValue, MaxedAtStart) VALUES "
-                + "(@Id, @Name, @MaxValue, @MinValue, @MaxedAtStart)";
+            string query = String.Format("INSERT INTO dbo.{0} (Id, Name, MaxValue, MinValue, MaxedAtStart)" +
+                "VALUE ({1}, {2}, {3}, {4}, {5})",
+                tables[0], source.ID, source.Name, source.MaxValue, source.MinValue, source.MaxedAtStart);
 
             SqlCommand cmd = new SqlCommand(query, repo);
-
-            cmd.Parameters.AddWithValue("@Id", source.ID);
-            cmd.Parameters.AddWithValue("@Name", source.Name);
-            cmd.Parameters.AddWithValue("@MaxValue", source.MaxValue);
-            cmd.Parameters.AddWithValue("@MinValue", source.MinValue);
-            cmd.Parameters.AddWithValue("@MaxedAtStart", source.MaxedAtStart);
 
             cmd.ExecuteNonQuery();
         }
         internal static void DeleteResource(Resource source)
         {
-            string query = @"DELETE FROM " + tables[0] + " WHERE Id='" + source.ID + "'";
+            string query = String.Format(@"DELETE FROM {0} WHERE Id='{1}'", tables[0], source.ID);
 
             SqlCommand cmd = new SqlCommand(query, repo);
             cmd.ExecuteNonQuery();
-        }
-
-        internal static string Test1()
-        {
-            string output = "";
-
-            
-
-            return output;
-        }
-        internal static List<string> Test2()
-        {
-            List<string> output = new List<string>();
-
-            output = tables;
-
-            return output;
         }
     }
 }
