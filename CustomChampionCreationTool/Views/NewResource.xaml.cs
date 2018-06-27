@@ -1,4 +1,5 @@
-﻿using CustomChampionCreationTool.Objects;
+﻿
+using CCCTLibrary;
 using MoreLinq;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace CustomChampionCreationTool.Views
         public NewResource()
         {
             InitializeComponent();
-            resourceList = Repo.GetResources();
+            resourceList = Repo.GetResources().Item1;
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)

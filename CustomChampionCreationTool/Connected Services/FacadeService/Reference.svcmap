@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c58a92a9-c401-41e5-96a5-c3cb0d4c078f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:49418/Facade.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Facade.wsdl" MetadataType="Wsdl" ID="a69969f2-4b3e-4cc4-a673-202ae47dbdb2" SourceId="1" SourceUrl="http://localhost:49418/Facade.svc?wsdl" />
+    <MetadataFile FileName="Facade.disco" MetadataType="Disco" ID="b4ee7ebb-53cf-4aad-8075-0f36fca54cab" SourceId="1" SourceUrl="http://localhost:49418/Facade.svc?disco" />
+    <MetadataFile FileName="Facade2.xsd" MetadataType="Schema" ID="03e90a37-045a-434e-92d3-bf574208294d" SourceId="1" SourceUrl="http://localhost:49418/Facade.svc?xsd=xsd1" />
+    <MetadataFile FileName="Facade.xsd" MetadataType="Schema" ID="3b218995-169e-4757-981e-77d0655bc15a" SourceId="1" SourceUrl="http://localhost:49418/Facade.svc?xsd=xsd0" />
+    <MetadataFile FileName="Facade3.xsd" MetadataType="Schema" ID="5290e710-34c4-4d64-988e-581e4c95f093" SourceId="1" SourceUrl="http://localhost:49418/Facade.svc?xsd=xsd3" />
+    <MetadataFile FileName="Facade1.xsd" MetadataType="Schema" ID="0ba61edb-717b-4f72-9797-f3e0ba8a82a8" SourceId="1" SourceUrl="http://localhost:49418/Facade.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

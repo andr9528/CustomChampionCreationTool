@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Facade" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:49418/Facade.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:49418/Facade.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:49418/Facade.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CCCTLibrary" />
+      <xsd:import schemaLocation="http://localhost:49418/Facade.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFacade_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_Initialize_InputMessage">
+    <wsdl:part name="parameters" element="tns:Initialize" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_Initialize_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InitializeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_UpdateResource_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResource" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_UpdateResource_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_GetResources_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetResources" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_GetResources_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetResourcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_NewResource_InputMessage">
+    <wsdl:part name="parameters" element="tns:NewResource" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_NewResource_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NewResourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_DeleteResource_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResource" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_DeleteResource_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_UpdateAbility_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAbility" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_UpdateAbility_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAbilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_GetAbilities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAbilities" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_GetAbilities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAbilitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_NewAbility_InputMessage">
+    <wsdl:part name="parameters" element="tns:NewAbility" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_NewAbility_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NewAbilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_DeleteAbility_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAbility" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_DeleteAbility_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAbilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_UpdateChampion_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateChampion" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_UpdateChampion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateChampionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_GetChampions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChampions" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_GetChampions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChampionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_NewChampion_InputMessage">
+    <wsdl:part name="parameters" element="tns:NewChampion" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_NewChampion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NewChampionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_DeleteChampion_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteChampion" />
+  </wsdl:message>
+  <wsdl:message name="IFacade_DeleteChampion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteChampionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFacade">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFacade/GetData" message="tns:IFacade_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFacade/GetDataResponse" message="tns:IFacade_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Initialize">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFacade/Initialize" message="tns:IFacade_Initialize_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFacade/InitializeResponse" message="tns:IFacade_Initialize_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateResource">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFacade/UpdateResource" message="tns:IFacade_UpdateResource_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFacade/UpdateResourceResponse" message="tns:IFacade_UpdateResource_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResources">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFacade/GetResources" message="tns:IFacade_GetResources_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFacade/GetResourcesResponse" message="tns:IFacade_GetResources_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NewResource">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFacade/NewResource" message="tns:IFacade_NewResource_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFacade/NewResourceResponse" message="tns:IFacade_NewResource_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteResource">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFacade/DeleteResource" message="tns:IFacade_DeleteResource_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFacade/DeleteResourceResponse" message="tns:IFacade_DeleteResource_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAbility">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFacade/UpdateAbility" message="tns:IFacade_UpdateAbility_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFacade/UpdateAbilityResponse" message="tns:IFacade_UpdateAbility_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAbilities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFacade/GetAbilities" message="tns:IFacade_GetAbilities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFacade/GetAbilitiesResponse" message="tns:IFacade_GetAbilities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NewAbility">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFacade/NewAbility" message="tns:IFacade_NewAbility_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFacade/NewAbilityResponse" message="tns:IFacade_NewAbility_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAbility">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFacade/DeleteAbility" message="tns:IFacade_DeleteAbility_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFacade/DeleteAbilityResponse" message="tns:IFacade_DeleteAbility_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateChampion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFacade/UpdateChampion" message="tns:IFacade_UpdateChampion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFacade/UpdateChampionResponse" message="tns:IFacade_UpdateChampion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChampions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFacade/GetChampions" message="tns:IFacade_GetChampions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFacade/GetChampionsResponse" message="tns:IFacade_GetChampions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NewChampion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFacade/NewChampion" message="tns:IFacade_NewChampion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFacade/NewChampionResponse" message="tns:IFacade_NewChampion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteChampion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFacade/DeleteChampion" message="tns:IFacade_DeleteChampion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFacade/DeleteChampionResponse" message="tns:IFacade_DeleteChampion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IFacade" type="tns:IFacade">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IFacade/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Initialize">
+      <soap:operation soapAction="http://tempuri.org/IFacade/Initialize" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateResource">
+      <soap:operation soapAction="http://tempuri.org/IFacade/UpdateResource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResources">
+      <soap:operation soapAction="http://tempuri.org/IFacade/GetResources" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewResource">
+      <soap:operation soapAction="http://tempuri.org/IFacade/NewResource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteResource">
+      <soap:operation soapAction="http://tempuri.org/IFacade/DeleteResource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAbility">
+      <soap:operation soapAction="http://tempuri.org/IFacade/UpdateAbility" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAbilities">
+      <soap:operation soapAction="http://tempuri.org/IFacade/GetAbilities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewAbility">
+      <soap:operation soapAction="http://tempuri.org/IFacade/NewAbility" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAbility">
+      <soap:operation soapAction="http://tempuri.org/IFacade/DeleteAbility" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateChampion">
+      <soap:operation soapAction="http://tempuri.org/IFacade/UpdateChampion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChampions">
+      <soap:operation soapAction="http://tempuri.org/IFacade/GetChampions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewChampion">
+      <soap:operation soapAction="http://tempuri.org/IFacade/NewChampion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteChampion">
+      <soap:operation soapAction="http://tempuri.org/IFacade/DeleteChampion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Facade">
+    <wsdl:port name="BasicHttpBinding_IFacade" binding="tns:BasicHttpBinding_IFacade">
+      <soap:address location="http://localhost:49418/Facade.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

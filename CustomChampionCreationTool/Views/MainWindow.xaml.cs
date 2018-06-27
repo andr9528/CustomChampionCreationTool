@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CCCTLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,16 @@ namespace CustomChampionCreationTool.Views
         {
             InitializeComponent();
 
-            Repo.Initialize();
+            ReturnMessage message = Repo.Initialize();
+
+            if (message.WasSuccesful == false)
+            {
+                string warning = "Initialization of Database Handler failed \n" +
+                                    "Restart program to try again \n" +
+                                    "If this message have been shown multiple times, then contact program creator";
+
+                MessageBox.Show(warning, "Warning", MessageBoxButton.OK);
+            }
         }
 
         private void NewChamp_Click(object sender, RoutedEventArgs e)
@@ -47,7 +57,10 @@ namespace CustomChampionCreationTool.Views
 
         private void ShowCreators_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Created by André Steenhoff Madsen, aka WolfDK", "Creators", MessageBoxButton.OK);
+            string message = "Created by André Steenhoff Madsen, aka WolfDK \n" +
+                            "Email: andre@steenhoff.dk or mcwolfdk@gmail.com";
+                                
+            MessageBox.Show(message, "Creators", MessageBoxButton.OK);
         }
     }
 }

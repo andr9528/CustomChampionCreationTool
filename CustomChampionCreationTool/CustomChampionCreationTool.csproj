@@ -40,6 +40,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -64,6 +66,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Connected Services\FacadeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Repo.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -87,9 +94,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Objects\Ability.cs" />
-    <Compile Include="Objects\Champion.cs" />
-    <Compile Include="Objects\Resource.cs" />
     <Compile Include="Views\ShowResource.xaml.cs">
       <DependentUpon>ShowResource.xaml</DependentUpon>
     </Compile>
@@ -140,7 +144,24 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\FacadeService\Facade.wsdl" />
+    <None Include="Connected Services\FacadeService\Facade.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FacadeService\Facade1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FacadeService\Facade2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FacadeService\Facade3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CCCTLibrary.Ability.datasource" />
+    <None Include="Properties\DataSources\CCCTLibrary.Champion.datasource" />
+    <None Include="Properties\DataSources\CCCTLibrary.Resource.datasource" />
+    <None Include="Properties\DataSources\CCCTLibrary.ReturnMessage.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -149,7 +170,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
@@ -178,6 +201,30 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\FacadeService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\FacadeService\Facade.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\FacadeService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\FacadeService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\FacadeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CCCTLibrary\CCCTLibrary.csproj">
+      <Project>{4F66F20B-9FF8-4226-8AEB-73E5B1919803}</Project>
+      <Name>CCCTLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

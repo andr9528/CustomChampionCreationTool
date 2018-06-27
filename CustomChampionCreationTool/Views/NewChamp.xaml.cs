@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using CustomChampionCreationTool.Objects;
+using CCCTLibrary;
 
 
 namespace CustomChampionCreationTool.Views
@@ -40,7 +40,6 @@ namespace CustomChampionCreationTool.Views
             EAbilityButton.Content = "New Ability";
             RAbilityButton.Content = "New Ability";
 
-            ResourceType.ItemsSource = resourceNamesList;
             ResourceType.SelectedIndex = 0;
         }
 
@@ -61,11 +60,6 @@ namespace CustomChampionCreationTool.Views
 
         private void ResourceType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch (ResourceType.SelectedIndex)
-            {
-                default:
-                    break;
-            }
 
         }
 
@@ -85,7 +79,7 @@ namespace CustomChampionCreationTool.Views
             if (after == before + 1)
             {
                 UpdateAvailableResources();
-                ResourceType.ItemsSource = resourceList; // needed to force update the dropdown menu.
+                ResourceType.ItemsSource = new string[] { "You Can't See Me" };
                 ResourceType.ItemsSource = resourceNamesList;
                 ResourceType.SelectedIndex = resourceList.Count - 1; 
             }
@@ -96,17 +90,22 @@ namespace CustomChampionCreationTool.Views
         }
         private void UpdateAvailableResources()
         {
-            resourceList = Repo.GetResources();
+            int indexBefore = ResourceType.SelectedIndex;
+            resourceList = Repo.GetResources().Item1;
             resourceNamesList.Clear();
+            ResourceType.ItemsSource = new string[] { "You Can't See Me" };
 
             foreach (Resource item in resourceList)
             {
                 resourceNamesList.Add(item.ToStringR());
             }
+
+            ResourceType.ItemsSource = resourceNamesList;
+            ResourceType.SelectedIndex = indexBefore;
         }
         private void UpdateAvailableAbilities()
         {
-            abilitiesList = Repo.GetAbilities();
+            abilitiesList = Repo.GetAbilities().Item1;
         }
 
         private void ShowResource_Click(object sender, RoutedEventArgs e)
@@ -120,6 +119,7 @@ namespace CustomChampionCreationTool.Views
 
         private void DeleteResource_Click(object sender, RoutedEventArgs e)
         {
+            int indexBefore = ResourceType.SelectedIndex;
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete the selected Resource?", "Warning", MessageBoxButton.YesNo);
 
             try
@@ -127,19 +127,23 @@ namespace CustomChampionCreationTool.Views
                 if (result == MessageBoxResult.Yes)
                 {
                     Repo.DeleteResource(resourceList[ResourceType.SelectedIndex]);
+
+                    UpdateAvailableResources();
+                    ResourceType.SelectedIndex = indexBefore - 1;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Something went wrong - " + ex.Message, "Error" , MessageBoxButton.OK);
             }
+            
         }
 
         private void PassiveAbilityButton_Click(object sender, RoutedEventArgs e)
         {
             if (champ.PassiveAbility == null)
             {
-                Ability ability = NewAbility(Repo.AbilitySlot.Passive, ResourceType.SelectedIndex);
+                Ability ability = NewAbility(LibRepo.AbilitySlot.Passive, ResourceType.SelectedIndex);
 
                 if (ability == null)
                 {
@@ -159,6 +163,12 @@ namespace CustomChampionCreationTool.Views
                 Ability showAbility = ShowAbility(champ.PassiveAbility);
 
                 champ.PassiveAbility = showAbility;
+
+                if (champ.PassiveAbility == null)
+                {
+                    PassiveAbilityButton.Content = "New Ability";
+                    PassiveAbilityText.Text = "";
+                }
             }
         }
 
@@ -166,7 +176,7 @@ namespace CustomChampionCreationTool.Views
         {
             if (champ.QAbility == null)
             {
-                Ability ability = NewAbility(Repo.AbilitySlot.Q, ResourceType.SelectedIndex);
+                Ability ability = NewAbility(LibRepo.AbilitySlot.Q, ResourceType.SelectedIndex);
 
                 if (ability == null)
                 {
@@ -184,6 +194,12 @@ namespace CustomChampionCreationTool.Views
                 Ability showAbility = ShowAbility(champ.QAbility);
 
                 champ.QAbility = showAbility;
+
+                if (champ.QAbility == null)
+                {
+                    QAbilityButton.Content = "New Ability";
+                    QAbilityText.Text = "";
+                }
             }
 
             
@@ -193,7 +209,7 @@ namespace CustomChampionCreationTool.Views
         {
             if (champ.WAbility == null)
             {
-                Ability ability = NewAbility(Repo.AbilitySlot.W, ResourceType.SelectedIndex);
+                Ability ability = NewAbility(LibRepo.AbilitySlot.W, ResourceType.SelectedIndex);
 
                 if (ability == null)
                 {
@@ -211,6 +227,12 @@ namespace CustomChampionCreationTool.Views
                 Ability showAbility = ShowAbility(champ.WAbility);
 
                 champ.WAbility = showAbility;
+
+                if (champ.WAbility == null)
+                {
+                    WAbilityButton.Content = "New Ability";
+                    WAbilityText.Text = "";
+                }
             }
         }
 
@@ -218,7 +240,7 @@ namespace CustomChampionCreationTool.Views
         {
             if (champ.EAbility == null)
             {
-                Ability ability = NewAbility(Repo.AbilitySlot.E, ResourceType.SelectedIndex);
+                Ability ability = NewAbility(LibRepo.AbilitySlot.E, ResourceType.SelectedIndex);
 
                 if (ability == null)
                 {
@@ -236,6 +258,12 @@ namespace CustomChampionCreationTool.Views
                 Ability showAbility = ShowAbility(champ.EAbility);
 
                 champ.EAbility = showAbility;
+
+                if (champ.EAbility == null)
+                {
+                    EAbilityButton.Content = "New Ability";
+                    EAbilityText.Text = "";
+                }
             }
 
             
@@ -245,7 +273,7 @@ namespace CustomChampionCreationTool.Views
         {
             if (champ.RAbility == null)
             {
-                Ability newAbility = NewAbility(Repo.AbilitySlot.R, ResourceType.SelectedIndex);
+                Ability newAbility = NewAbility(LibRepo.AbilitySlot.R, ResourceType.SelectedIndex);
 
                 if (newAbility == null)
                 {
@@ -263,14 +291,16 @@ namespace CustomChampionCreationTool.Views
                 Ability showAbility = ShowAbility(champ.RAbility);
 
                 champ.RAbility = showAbility;
-            }
 
-            
-
-            
+                if (champ.RAbility == null)
+                {
+                    RAbilityButton.Content = "New Ability";
+                    RAbilityText.Text = "";
+                }
+            }  
         }
 
-        private Ability NewAbility(Repo.AbilitySlot slot, int typeIndex)
+        private Ability NewAbility(LibRepo.AbilitySlot slot, int typeIndex)
         {
             Ability output = null;
             UpdateAvailableAbilities();
@@ -290,15 +320,29 @@ namespace CustomChampionCreationTool.Views
             return output;
         }
 
-        private Ability ShowAbility(Ability output)
+        private Ability ShowAbility(Ability input)
         {
+            Ability output = null;
+            UpdateAvailableAbilities();
+            int before = abilitiesList.Count;
+
             ShowAbility showAbility = new ShowAbility();
-            showAbility.Initialize(output);
+            showAbility.Initialize(input);
             showAbility.ShowDialog();
 
             UpdateAvailableAbilities();
+            int after = abilitiesList.Count;
 
-            output = abilitiesList.Find(x => x.ID == output.ID);
+            try
+            {
+                if (after != before - 1)
+                {
+                    output = abilitiesList.Find(x => x.ID == input.ID);
+                }
+            }
+            catch (ArgumentNullException)
+            {
+            }
 
             return output;
         }
