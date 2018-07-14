@@ -1,87 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/CCCTLibrary" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CCCTLibrary" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ReturnMessage">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Exception" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="WasSuccesful" type="xs:boolean" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ReturnMessage" nillable="true" type="tns:ReturnMessage" />
-  <xs:complexType name="Resource">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ID" type="xs:int" />
-      <xs:element minOccurs="0" name="MaxValue" type="xs:int" />
-      <xs:element minOccurs="0" name="MaxedAtStart" type="xs:boolean" />
-      <xs:element minOccurs="0" name="MinValue" type="xs:int" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Resource" nillable="true" type="tns:Resource" />
-  <xs:complexType name="ArrayOfResource">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Resource" nillable="true" type="tns:Resource" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfResource" nillable="true" type="tns:ArrayOfResource" />
-  <xs:complexType name="Ability">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CooldownAct" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="CooldownEmpAlt" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="CooldownPas" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DamageAct" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DamageEmpAlt" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DamagePas" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DescriptionAct" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DescriptionEmpAlt" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DescriptionPas" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="HaveActive" type="xs:boolean" />
-      <xs:element minOccurs="0" name="HaveEmpoweredOrAlternative" type="xs:boolean" />
-      <xs:element minOccurs="0" name="HavePassive" type="xs:boolean" />
-      <xs:element minOccurs="0" name="ID" type="xs:int" />
-      <xs:element minOccurs="0" name="IsToogleAble" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RangeAct" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RangeEmpAlt" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RangePas" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ResourceCostAct" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ResourceCostEmpAlt" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ResourceUse" nillable="true" type="tns:Resource" />
-      <xs:element minOccurs="0" name="Slot" type="tns:LibRepo.AbilitySlot" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Ability" nillable="true" type="tns:Ability" />
-  <xs:simpleType name="LibRepo.AbilitySlot">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Passive" />
-      <xs:enumeration value="Q" />
-      <xs:enumeration value="W" />
-      <xs:enumeration value="E" />
-      <xs:enumeration value="R" />
+<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="anyType" nillable="true" type="xs:anyType" />
+  <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+  <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+  <xs:element name="boolean" nillable="true" type="xs:boolean" />
+  <xs:element name="byte" nillable="true" type="xs:byte" />
+  <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+  <xs:element name="decimal" nillable="true" type="xs:decimal" />
+  <xs:element name="double" nillable="true" type="xs:double" />
+  <xs:element name="float" nillable="true" type="xs:float" />
+  <xs:element name="int" nillable="true" type="xs:int" />
+  <xs:element name="long" nillable="true" type="xs:long" />
+  <xs:element name="QName" nillable="true" type="xs:QName" />
+  <xs:element name="short" nillable="true" type="xs:short" />
+  <xs:element name="string" nillable="true" type="xs:string" />
+  <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+  <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+  <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+  <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+  <xs:element name="char" nillable="true" type="tns:char" />
+  <xs:simpleType name="char">
+    <xs:restriction base="xs:int" />
+  </xs:simpleType>
+  <xs:element name="duration" nillable="true" type="tns:duration" />
+  <xs:simpleType name="duration">
+    <xs:restriction base="xs:duration">
+      <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+      <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+      <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="LibRepo.AbilitySlot" nillable="true" type="tns:LibRepo.AbilitySlot" />
-  <xs:complexType name="ArrayOfAbility">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ability" nillable="true" type="tns:Ability" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfAbility" nillable="true" type="tns:ArrayOfAbility" />
-  <xs:complexType name="Champion">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="EAbility" nillable="true" type="tns:Ability" />
-      <xs:element minOccurs="0" name="ID" type="xs:int" />
-      <xs:element minOccurs="0" name="PassiveAbility" nillable="true" type="tns:Ability" />
-      <xs:element minOccurs="0" name="QAbility" nillable="true" type="tns:Ability" />
-      <xs:element minOccurs="0" name="RAbility" nillable="true" type="tns:Ability" />
-      <xs:element minOccurs="0" name="WAbility" nillable="true" type="tns:Ability" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Champion" nillable="true" type="tns:Champion" />
-  <xs:complexType name="ArrayOfChampion">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Champion" nillable="true" type="tns:Champion" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfChampion" nillable="true" type="tns:ArrayOfChampion" />
+  <xs:element name="guid" nillable="true" type="tns:guid" />
+  <xs:simpleType name="guid">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attribute name="FactoryType" type="xs:QName" />
+  <xs:attribute name="Id" type="xs:ID" />
+  <xs:attribute name="Ref" type="xs:IDREF" />
 </xs:schema>

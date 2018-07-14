@@ -12,27 +12,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CCCTLibrary;
-
+using MoreLinq;
 
 namespace CustomChampionCreationTool.Views
 {
     /// <summary>
     /// Interaction logic for NewChamp.xaml
     /// </summary>
-    public partial class NewChamp : Window
+    public partial class NewChampion : Window
     {
-        List<string> resourceNamesList = new List<string>();
-        List<Resource> resourceList;
-        List<Ability> abilitiesList;
-        
         Champion champ = new Champion();
 
-        public NewChamp()
+        public NewChampion()
         {
             InitializeComponent();
-            Title = "New Champion";
-
-            UpdateAvailableResources();
+            Repo.UpdateAvailableResources();
 
             PassiveAbilityButton.Content = "New Ability";
             QAbilityButton.Content = "New Ability";
@@ -40,14 +34,110 @@ namespace CustomChampionCreationTool.Views
             EAbilityButton.Content = "New Ability";
             RAbilityButton.Content = "New Ability";
 
+            ResourceType.ItemsSource = Repo.ResourceNamesList;
             ResourceType.SelectedIndex = 0;
         }
-
-        private void Create_Click(object sender, RoutedEventArgs e)
+        #region General Methods
+        private Ability NewAbility(LibRepo.AbilitySlot slot, int typeIndex)
         {
+            Ability output = null;
+            Repo.UpdateAvailableAbilities();
+            int before = Repo.AbilitiesList.Count;
 
+            NewAbility newAbility = new NewAbility();
+            newAbility.Initialize(slot, typeIndex);
+            newAbility.ShowDialog();
+
+            Repo.UpdateAvailableAbilities();
+            int after = Repo.AbilitiesList.Count;
+
+            if (after == before + 1)
+            {
+                output = Repo.AbilitiesList.Last();
+            }
+            return output;
         }
 
+        private Ability ShowAbility(Ability input)
+        {
+            Ability output = null;
+            Repo.UpdateAvailableAbilities();
+            int before = Repo.AbilitiesList.Count;
+
+            ShowAbility showAbility = new ShowAbility();
+            showAbility.Initialize(input);
+            showAbility.ShowDialog();
+
+            Repo.UpdateAvailableAbilities();
+            int after = Repo.AbilitiesList.Count;
+
+            try
+            {
+                if (after != before - 1)
+                {
+                    output = Repo.AbilitiesList.Find(x => x.ID == input.ID);
+                }
+            }
+            catch (ArgumentNullException)
+            {
+            }
+
+            return output;
+        }
+        #endregion
+
+        #region Click Handlers
+        private void Create_Click(object sender, RoutedEventArgs e)
+        {
+            int id;
+            if (Repo.ChampionList.Count == 0)
+            {
+                id = 0;
+            }
+            else
+            {
+                id = Repo.ChampionList.MaxBy(x => x.ID).ID + 1;
+            }
+
+            champ.ID = id;
+            champ.Resource = Repo.ResourceList[ResourceType.SelectedIndex];
+            champ.Name = Name.Text;
+            champ.HealthStart = Health.Text;
+            champ.HealthGrowth = HealthGrowth.Text;
+            champ.HealthRegenStart = HealthRegeneration.Text;
+            champ.HealthRegenGrowth = HealthRegenerationGrowth.Text;
+            champ.ResourceStart = Resource.Text;
+            champ.ResourceGrowth = ResourceGrowth.Text;
+            champ.ResourceRegenStart = ResourceRegeneration.Text;
+            champ.ResourceRegenGrowth = ResourceRegenerationGrowth.Text;
+            champ.AttackDamageStart = AttackDamage.Text;
+            champ.AttackDamageGrowth = AttackDamageGrowth.Text;
+            champ.AbilityPowerStart = AbilityPower.Text;
+            champ.AbilityPowerGrowth = AbilityPowerGrowth.Text;
+            champ.AttackSpeedStart = AttackSpeed.Text;
+            champ.AttackSpeedGrowth = AttackSpeedGrowth.Text;
+            champ.RangeStart = Range.Text;
+            champ.RangeGrowth = RangeGrowth.Text;
+            champ.CriticalStrikeChanceStart = CriticalStrikeChance.Text;
+            champ.CriticalStrikeChanceGrowth = CriticalStrikeChanceGrowth.Text;
+            champ.ArmorStart = Armor.Text;
+            champ.ArmorGrowth = ArmorGrowth.Text;
+            champ.MagicResistStart = MagicResist.Text;
+            champ.MagicResistGrowth = MagicResistGrowth.Text;
+            champ.MoveSpeedStart = Movespeed.Text;
+            champ.MoveSpeedGrowth = MovespeedGrowth.Text;
+
+            ReturnMessage result = Repo.NewChampion(champ);
+
+            if (result.WasSuccesful == true)
+            {
+                Close();
+            }
+            else
+            {
+                MessageBox.Show(result.Message + " - " + result.Exception, "Warning", MessageBoxButton.OK);
+            }
+        }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to close without saving?", "Warning", MessageBoxButton.YesNo);
@@ -57,88 +147,63 @@ namespace CustomChampionCreationTool.Views
                 Close();
             }
         }
-
-        private void ResourceType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void NewResource_Click(object sender, RoutedEventArgs e)
         {
-            UpdateAvailableResources();
+            Repo.UpdateAvailableResources();
 
-            int before = resourceList.Count;
+            int before = Repo.ResourceList.Count;
 
             NewResource newResource = new NewResource();
             newResource.ShowDialog();
 
-            UpdateAvailableResources();
+            Repo.UpdateAvailableResources();
 
-            int after = resourceList.Count;
+            int after = Repo.ResourceList.Count;
 
             if (after == before + 1)
             {
-                UpdateAvailableResources();
+                Repo.UpdateAvailableResources();
                 ResourceType.ItemsSource = new string[] { "You Can't See Me" };
-                ResourceType.ItemsSource = resourceNamesList;
-                ResourceType.SelectedIndex = resourceList.Count - 1; 
+                ResourceType.ItemsSource = Repo.ResourceNamesList;
+                ResourceType.SelectedIndex = Repo.ResourceList.Count - 1;
             }
             else
             {
                 MessageBox.Show("Resource Creation cancelled by User", "Message", MessageBoxButton.OK);
             }
         }
-        private void UpdateAvailableResources()
-        {
-            int indexBefore = ResourceType.SelectedIndex;
-            resourceList = Repo.GetResources().Item1;
-            resourceNamesList.Clear();
-            ResourceType.ItemsSource = new string[] { "You Can't See Me" };
-
-            foreach (Resource item in resourceList)
-            {
-                resourceNamesList.Add(item.ToStringR());
-            }
-
-            ResourceType.ItemsSource = resourceNamesList;
-            ResourceType.SelectedIndex = indexBefore;
-        }
-        private void UpdateAvailableAbilities()
-        {
-            abilitiesList = Repo.GetAbilities().Item1;
-        }
-
         private void ShowResource_Click(object sender, RoutedEventArgs e)
         {
             ShowResource show = new ShowResource();
-            show.Initialize(resourceList[ResourceType.SelectedIndex]);
+            show.Initialize(Repo.ResourceList[ResourceType.SelectedIndex]);
 
             show.ShowDialog();
-            UpdateAvailableResources();
+            Repo.UpdateAvailableResources();
         }
-
         private void DeleteResource_Click(object sender, RoutedEventArgs e)
         {
             int indexBefore = ResourceType.SelectedIndex;
             MessageBoxResult result = MessageBox.Show("Are you sure you want to delete the selected Resource?", "Warning", MessageBoxButton.YesNo);
+            ReturnMessage returnMessage = null;
 
             try
             {
                 if (result == MessageBoxResult.Yes)
                 {
-                    Repo.DeleteResource(resourceList[ResourceType.SelectedIndex]);
+                    returnMessage = Repo.DeleteResource(Repo.ResourceList[ResourceType.SelectedIndex]);
+                    ResourceType.ItemsSource = new string[] { "You Can't See Me" };
 
-                    UpdateAvailableResources();
+                    Repo.UpdateAvailableResources();
+                    ResourceType.ItemsSource = Repo.ResourceNamesList;
                     ResourceType.SelectedIndex = indexBefore - 1;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Something went wrong - " + ex.Message, "Error" , MessageBoxButton.OK);
+                MessageBox.Show("Something went wrong - " + ex.Message, "Error", MessageBoxButton.OK);
             }
-            
         }
-
+        #region Ability Buttons
         private void PassiveAbilityButton_Click(object sender, RoutedEventArgs e)
         {
             if (champ.PassiveAbility == null)
@@ -155,8 +220,6 @@ namespace CustomChampionCreationTool.Views
                     PassiveAbilityText.Text = champ.PassiveAbility.Name;
                     PassiveAbilityButton.Content = "Show Ability";
                 }
-
-                
             }
             else
             {
@@ -171,7 +234,6 @@ namespace CustomChampionCreationTool.Views
                 }
             }
         }
-
         private void QAbilityButton_Click(object sender, RoutedEventArgs e)
         {
             if (champ.QAbility == null)
@@ -187,7 +249,7 @@ namespace CustomChampionCreationTool.Views
                     champ.QAbility = ability;
                     QAbilityText.Text = champ.QAbility.Name;
                     QAbilityButton.Content = "Show Ability";
-                } 
+                }
             }
             else
             {
@@ -201,10 +263,7 @@ namespace CustomChampionCreationTool.Views
                     QAbilityText.Text = "";
                 }
             }
-
-            
         }
-
         private void WAbilityButton_Click(object sender, RoutedEventArgs e)
         {
             if (champ.WAbility == null)
@@ -220,7 +279,7 @@ namespace CustomChampionCreationTool.Views
                     champ.WAbility = ability;
                     WAbilityText.Text = champ.WAbility.Name;
                     WAbilityButton.Content = "Show Ability";
-                } 
+                }
             }
             else
             {
@@ -251,7 +310,7 @@ namespace CustomChampionCreationTool.Views
                     champ.EAbility = ability;
                     EAbilityText.Text = champ.EAbility.Name;
                     EAbilityButton.Content = "Show Ability";
-                } 
+                }
             }
             else
             {
@@ -265,8 +324,6 @@ namespace CustomChampionCreationTool.Views
                     EAbilityText.Text = "";
                 }
             }
-
-            
         }
 
         private void RAbilityButton_Click(object sender, RoutedEventArgs e)
@@ -297,54 +354,11 @@ namespace CustomChampionCreationTool.Views
                     RAbilityButton.Content = "New Ability";
                     RAbilityText.Text = "";
                 }
-            }  
+            }
         }
 
-        private Ability NewAbility(LibRepo.AbilitySlot slot, int typeIndex)
-        {
-            Ability output = null;
-            UpdateAvailableAbilities();
-            int before = abilitiesList.Count;
+        #endregion
 
-            NewAbility newAbility = new NewAbility();
-            newAbility.Initialize(slot, typeIndex);
-            newAbility.ShowDialog();
-
-            UpdateAvailableAbilities();
-            int after = abilitiesList.Count;
-
-            if (after == before + 1)
-            {
-                output = abilitiesList.Last();
-            }
-            return output;
-        }
-
-        private Ability ShowAbility(Ability input)
-        {
-            Ability output = null;
-            UpdateAvailableAbilities();
-            int before = abilitiesList.Count;
-
-            ShowAbility showAbility = new ShowAbility();
-            showAbility.Initialize(input);
-            showAbility.ShowDialog();
-
-            UpdateAvailableAbilities();
-            int after = abilitiesList.Count;
-
-            try
-            {
-                if (after != before - 1)
-                {
-                    output = abilitiesList.Find(x => x.ID == input.ID);
-                }
-            }
-            catch (ArgumentNullException)
-            {
-            }
-
-            return output;
-        }
+        #endregion
     }
 }

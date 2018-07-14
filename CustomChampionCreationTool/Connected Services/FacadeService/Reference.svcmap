@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c58a92a9-c401-41e5-96a5-c3cb0d4c078f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="12701edd-4e2b-468b-804a-9975c82bb3b1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -21,15 +21,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:49418/Facade.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://www12.steenhoff.dk/Facade.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Facade.wsdl" MetadataType="Wsdl" ID="a69969f2-4b3e-4cc4-a673-202ae47dbdb2" SourceId="1" SourceUrl="http://localhost:49418/Facade.svc?wsdl" />
-    <MetadataFile FileName="Facade.disco" MetadataType="Disco" ID="b4ee7ebb-53cf-4aad-8075-0f36fca54cab" SourceId="1" SourceUrl="http://localhost:49418/Facade.svc?disco" />
-    <MetadataFile FileName="Facade2.xsd" MetadataType="Schema" ID="03e90a37-045a-434e-92d3-bf574208294d" SourceId="1" SourceUrl="http://localhost:49418/Facade.svc?xsd=xsd1" />
-    <MetadataFile FileName="Facade.xsd" MetadataType="Schema" ID="3b218995-169e-4757-981e-77d0655bc15a" SourceId="1" SourceUrl="http://localhost:49418/Facade.svc?xsd=xsd0" />
-    <MetadataFile FileName="Facade3.xsd" MetadataType="Schema" ID="5290e710-34c4-4d64-988e-581e4c95f093" SourceId="1" SourceUrl="http://localhost:49418/Facade.svc?xsd=xsd3" />
-    <MetadataFile FileName="Facade1.xsd" MetadataType="Schema" ID="0ba61edb-717b-4f72-9797-f3e0ba8a82a8" SourceId="1" SourceUrl="http://localhost:49418/Facade.svc?xsd=xsd2" />
+    <MetadataFile FileName="Facade.xsd" MetadataType="Schema" ID="60055880-a737-4577-8c46-382df2cd64be" SourceId="1" SourceUrl="http://www12.steenhoff.dk/Facade.svc?xsd=xsd0" />
+    <MetadataFile FileName="Facade1.xsd" MetadataType="Schema" ID="2b222209-8716-4d0a-93ae-f07681a57b40" SourceId="1" SourceUrl="http://www12.steenhoff.dk/Facade.svc?xsd=xsd1" />
+    <MetadataFile FileName="Facade.disco" MetadataType="Disco" ID="c268660a-ecd6-4b33-8a9c-271964c0b8b8" SourceId="1" SourceUrl="http://www12.steenhoff.dk/Facade.svc?disco" />
+    <MetadataFile FileName="Facade2.xsd" MetadataType="Schema" ID="a54eb50f-1154-49e8-84cf-3f2f12aaf518" SourceId="1" SourceUrl="http://www12.steenhoff.dk/Facade.svc?xsd=xsd3" />
+    <MetadataFile FileName="Facade3.xsd" MetadataType="Schema" ID="ee139656-daab-469a-ad4d-9e05e3b696ee" SourceId="1" SourceUrl="http://www12.steenhoff.dk/Facade.svc?xsd=xsd2" />
+    <MetadataFile FileName="Facade.wsdl" MetadataType="Wsdl" ID="0163b04c-112c-4f14-8fdb-6590b9a83d8b" SourceId="1" SourceUrl="http://www12.steenhoff.dk/Facade.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -28,12 +28,9 @@ namespace CustomChampionCreationTool.Views
             GoodExit.Content = "OK";
             BadExit.Visibility = Visibility.Hidden;
 
-            MaxValue.IsReadOnly = true;
-            MinValue.IsReadOnly = true;
-            Name.IsReadOnly = true;
-            StartMaxed.IsEnabled = false;
+            Check();
         }
-
+        #region Click Handlers
         private void GoodExit_Click(object sender, RoutedEventArgs e)
         {
             if (EditMode.IsChecked == false)
@@ -59,16 +56,6 @@ namespace CustomChampionCreationTool.Views
                 }
             }
         }
-        public void Initialize(Resource _resource)
-        {
-            resource = _resource;
-
-            MaxValue.Text = resource.MaxValue.ToString();
-            MinValue.Text = resource.MinValue.ToString();
-            Name.Text = resource.Name;
-            StartMaxed.IsChecked = resource.MaxedAtStart;
-        }
-
         private void BadExit_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to close without saveing?", "Warning", MessageBoxButton.YesNo);
@@ -78,12 +65,20 @@ namespace CustomChampionCreationTool.Views
                 Close();
             }
         }
+        #endregion
 
+        #region Checkbox Handlers
         private void EditMode_Checked(object sender, RoutedEventArgs e)
         {
             Check();
         }
+        private void EditMode_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Check();
+        }
+        #endregion
 
+        #region General Methods
         private void Check()
         {
             if ((bool)EditMode.IsChecked)
@@ -107,10 +102,15 @@ namespace CustomChampionCreationTool.Views
                 StartMaxed.IsEnabled = false;
             }
         }
-
-        private void EditMode_Unchecked(object sender, RoutedEventArgs e)
+        public void Initialize(Resource _resource)
         {
-            Check();
+            resource = _resource;
+
+            MaxValue.Text = resource.MaxValue.ToString();
+            MinValue.Text = resource.MinValue.ToString();
+            Name.Text = resource.Name;
+            StartMaxed.IsChecked = resource.MaxedAtStart;
         }
+        #endregion
     }
 }

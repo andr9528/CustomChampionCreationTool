@@ -3,11 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:CustomChampionCreationTool="clr-namespace:CustomChampionCreationTool" x:Class="CustomChampionCreationTool.Views.NewChamp"
+        xmlns:CustomChampionCreationTool="clr-namespace:CustomChampionCreationTool" x:Class="CustomChampionCreationTool.Views.NewChampion"
         mc:Ignorable="d"
-        Title="NewChamp" Height="600" Width="1000">
+        Title="New Champion" Height="600" Width="1000">
     <Grid>
         <Grid HorizontalAlignment="Left" Height="569" VerticalAlignment="Top" Width="982" >
+            <!--#region Grid Definitions-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -33,7 +34,8 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-
+<!--#endregion-->
+            
             <Button Name="ShowResource" Content="Show Resource" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Width="105" Click="ShowResource_Click"/>
             <Button Name="Cancel" Content="Cancel" HorizontalAlignment="Center" Grid.Row="13" Grid.Column="6" VerticalAlignment="Center" Width="75" Click="Cancel_Click"/>
             <Button Name="Create" Content="Create" HorizontalAlignment="Center" Grid.Row="13" Grid.Column="5" VerticalAlignment="Center" Width="75" Click="Create_Click"/>
@@ -46,7 +48,7 @@
             <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Width="105" Name="EAbilityButton" Click="EAbilityButton_Click"/>
             <Button  Grid.Column="6" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="105" Name="RAbilityButton" Click="RAbilityButton_Click"/>
 
-            <ComboBox Name="ResourceType" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Width="130" SelectionChanged="ResourceType_SelectionChanged" />
+            <ComboBox Name="ResourceType" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Width="130"/>
 
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" Text="Resource Type" Width="130" TextAlignment="Center" ToolTip="What Resource does this Champion Use?"/>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="Health" Width="130" TextAlignment="Center" ToolTip="Format: # - #"/>
@@ -88,6 +90,7 @@
             <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="12" Grid.Column="2" TextWrapping="Wrap" Name="MovespeedGrowth" Width="130" TextAlignment="Center" ToolTip="Growth Value"/>
             <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="9" Grid.Column="2" TextWrapping="Wrap" Name="CriticalStrikeChanceGrowth" Width="130" TextAlignment="Center" ToolTip="Growth Value"/>
 
+
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="2" Grid.Column="3" TextWrapping="Wrap" Text="Passive Ability" Width="130" TextAlignment="Center"/>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="3" Grid.Column="3" TextWrapping="Wrap" Text="Q Ability" Width="130" TextAlignment="Center"/>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="4" Grid.Column="3" TextWrapping="Wrap" Text="W Ability" Width="130" TextAlignment="Center"/>
@@ -102,12 +105,9 @@
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2" TextWrapping="Wrap" Name="RAbilityText" Width="260" TextAlignment="Center"/>
             <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="180" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="3" Grid.RowSpan="5" TextWrapping="Wrap" Name="LoreText" Width="400" TextAlignment="Center" AcceptsReturn="True"/>
 
-
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="1" Grid.Column="3" TextWrapping="Wrap" Text="Name" Width="130" TextAlignment="Center"/>
+            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="3" TextWrapping="Wrap" Name="Name" Width="400" TextAlignment="Center" />
 
         </Grid>
-        <!--Test>
-        <ListBox x:Name="Test" HorizontalAlignment="Left" Height="406" Margin="75,71,0,0" VerticalAlignment="Top" Width="281" Visibility="Hidden"/>
-        </Test-->
-
     </Grid>
 </Window>

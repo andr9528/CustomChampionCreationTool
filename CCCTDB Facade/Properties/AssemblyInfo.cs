@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CCCTDBFacade")]
+[assembly: AssemblyTitle("CCCTDB Facade")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CCCTDBFacade")]
+[assembly: AssemblyProduct("CCCTDB Facade")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("79312aca-05a8-4301-af57-653f2feae1c7")]
+[assembly: Guid("fd9d3eb0-cf1e-49e9-a986-423c318119eb")]
 
 // Version information for an assembly consists of the following four values:
 //

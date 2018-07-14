@@ -1,0 +1,76 @@
+Usage of todo:
+Mark a todo item with -X.Y- where X is the day of the Y, to mark the item with a deadline.
+Mark a todo item with {X} where X is a number, to link Todo items accrose places together, meaning those are to be done at the same time.
+Mark a todo item with [X] where X is a number, to mark them as prerequisites for boxes which contain a #.
+Mark a todo item with <Z> where Z is one of three letters, to mark how high priority the item has.
+	Items marked by the same [X] or {X} all have the same priority too
+	<H> --> High priority
+	<M> --> Medium Priority
+	<L> --> Low Priority
+
+General:
+	Intruduce Security Measures
+		{3} Version Control
+			Only the most recent version is allowed to access database
+			Store version number in 'LibRepo'
+		<M> {2} Paramatise SQL commands
+					To prevent SQL injections
+		{1} Login System
+				User are linked to the content they create, only allowing them and admin to edit/delete it
+				Users can create new accounts on login screen
+				User names are to be unique
+				Two users from start --> Admin & Readonly
+					Readonly is for mobile, as that is only ever going to show the Champions.
+					Admin is only for me, so that i can delete.
+				Users can only create if they have a security key
+					Prevents thirdparty sharing
+					Key is one use
+					Secoundary console application --> CCCT Key Generator 
+						--> Generates X amount of key directly put in to the database every time it is run
+
+Database:
+	{1} New Table to contain Object 'User'
+	{1} New Table to contain Security Keys
+			Int: ID
+			Varchar(MAX): KeyValue
+			Bit: UsedState
+
+Object:
+	{1} New Object 'User'
+			Int: ID
+			String: Username
+			String: Password --> Maybe hashed?
+			String: Key ID
+	{3} LibRepo New Value
+			Float: Version
+	{1}	Champion, Ability, Resource New Value
+			Int: CreatorID
+View:
+	<M> Fully Implement Champion --> Show
+	{1} Login View
+	{1} New User View
+	<L> Creator button --> Information View
+			Creators of program
+			Bug reporting site --> Github issues
+				Open a default browser with the link after a confirmation that opening is ok.
+			General settings for the program / user
+				Program settings stores locally in a txt or xml?
+
+Facade:
+	<M> {2} Rewrite Methods to use Parameters, to prevent SQL injection 
+	{1} Intruduce method to test if user is allowed certain actions
+			Rewrite methods to use this user testing
+	{3} Test on startup of program if Version value if equal on Program and Service
+
+-01.08- <H> Mobile:
+	Create Burgermenu, where menu items are champions from the Facade
+		 - Menu items should be held inside a ListView, which is in a ScrollView, so that the user can scroll down.
+	Setup Views
+		- Home screen, which is accessible from the burger menu, and intruduces the app to the user.
+		- Champion, which is accessible from the burger menu.
+		- Ability, which is accessible from one of 5 buttons on the champion view.
+		- Resource, which is accessible from a button on the champion view.
+
+ Known Issues:
+	<L> Textboxes in Ability Screen are too small --> PC
+			Fix: ColumnSpan = 2, Height * 2

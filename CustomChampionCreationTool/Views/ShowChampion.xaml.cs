@@ -17,9 +17,9 @@ namespace CustomChampionCreationTool.Views
     /// <summary>
     /// Interaction logic for ShowChamps.xaml
     /// </summary>
-    public partial class ShowChamps : Window
+    public partial class ShowChampion : Window
     {
-        public ShowChamps()
+        public ShowChampion()
         {
             InitializeComponent();
         }

@@ -22,76 +22,46 @@ namespace CustomChampionCreationTool.Views
     public partial class NewAbility : Window
     {
         LibRepo.AbilitySlot Slot;
-        List<string> resourceNamesList = new List<string>();
-        List<Resource> resourceList;
-        List<Ability> abilitiesList;
 
         public NewAbility()
         {
             InitializeComponent();
-            Title = "New Ability";
-            abilitiesList = Repo.GetAbilities().Item1;
 
-            UpdateAvailableResources();
-            ResourceType.ItemsSource = resourceNamesList;
+            Repo.UpdateAvailableResources();
+            ResourceType.ItemsSource = Repo.ResourceNamesList;
 
             HaveActive.IsChecked = true;
             HaveEmpoweredOrAlternative.IsChecked = true;
             HavePassive.IsChecked = true;
-        }
-
-        internal void Initialize(LibRepo.AbilitySlot slot, int typeIndex)
+        }        
+        #region Checkbox Handlers
+        private void HaveActive_Checked(object sender, RoutedEventArgs e)
         {
-            Slot = slot;
-            AbilitySlot.Text = Slot.ToString();
-            ResourceType.SelectedIndex = typeIndex;
-
-            switch (Slot)
-            {
-                case LibRepo.AbilitySlot.Passive:
-                    HaveActive.IsChecked = false;
-                    HaveEmpoweredOrAlternative.IsChecked = false;
-                    HavePassive.IsChecked = true;
-                    break;
-                case LibRepo.AbilitySlot.Q:
-                    HaveActive.IsChecked = true;
-                    HaveEmpoweredOrAlternative.IsChecked = false;
-                    HavePassive.IsChecked = false;
-                    break;
-                case LibRepo.AbilitySlot.W:
-                    HaveActive.IsChecked = true;
-                    HaveEmpoweredOrAlternative.IsChecked = false;
-                    HavePassive.IsChecked = false;
-                    break;
-                case LibRepo.AbilitySlot.E:
-                    HaveActive.IsChecked = true;
-                    HaveEmpoweredOrAlternative.IsChecked = false;
-                    HavePassive.IsChecked = false;
-                    break;
-                case LibRepo.AbilitySlot.R:
-                    HaveActive.IsChecked = true;
-                    HaveEmpoweredOrAlternative.IsChecked = false;
-                    HavePassive.IsChecked = false;
-                    break;
-                default:
-                    break;
-            }
+            CheckBoxHandler(sender);
         }
-        private void UpdateAvailableResources()
+        private void HaveActive_Unchecked(object sender, RoutedEventArgs e)
         {
-            resourceList = Repo.GetResources().Item1;
-            resourceNamesList.Clear();
-
-            foreach (Resource item in resourceList)
-            {
-                resourceNamesList.Add(item.ToStringR());
-            }
+            CheckBoxHandler(sender);
         }
-        private void ResourceType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void HaveEmpoweredOrAlternative_Checked(object sender, RoutedEventArgs e)
         {
-
+            CheckBoxHandler(sender);
         }
+        private void HaveEmpoweredOrAlternative_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CheckBoxHandler(sender);
+        }
+        private void HavePassive_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBoxHandler(sender);
+        }
+        private void HavePassive_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CheckBoxHandler(sender);
+        }
+        #endregion
 
+        #region Click Handlers
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to close without saving?", "Warning", MessageBoxButton.YesNo);
@@ -101,19 +71,18 @@ namespace CustomChampionCreationTool.Views
                 Close();
             }
         }
-
         private void Create_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 int id;
-                if (abilitiesList.Count == 0)
+                if (Repo.AbilitiesList.Count == 0)
                 {
                     id = 0;
                 }
                 else
                 {
-                    id = abilitiesList.MaxBy(x => x.ID).ID + 1;
+                    id = Repo.AbilitiesList.MaxBy(x => x.ID).ID + 1;
                 }
 
                 Ability dummy = new Ability()
@@ -121,7 +90,7 @@ namespace CustomChampionCreationTool.Views
                     Name = AbilityName.Text,
                     ID = id,
                     Slot = Slot,
-                    ResourceUse = resourceList[ResourceType.SelectedIndex],
+                    ResourceUse = Repo.ResourceList[ResourceType.SelectedIndex],
                     HaveActive = (bool)HaveActive.IsChecked,
                     IsToogleAble = (bool)IsToogleAble.IsChecked,
                     HaveEmpoweredOrAlternative = (bool)HaveEmpoweredOrAlternative.IsChecked,
@@ -141,7 +110,7 @@ namespace CustomChampionCreationTool.Views
                     DamagePas = DamagePas.Text,
                     CooldownPas = CooldownPas.Text
                 };
-                Repo.NewAbility(dummy);
+                ReturnMessage result = Repo.NewAbility(dummy);
 
                 Close();
             }
@@ -150,36 +119,9 @@ namespace CustomChampionCreationTool.Views
                 MessageBox.Show("Something went wrong - " + ex.Message, "Error", MessageBoxButton.OK);
             }
         }
+        #endregion
 
-        private void HaveActive_Checked(object sender, RoutedEventArgs e)
-        {
-            CheckBoxHandler(sender);
-        }
-
-        private void HaveActive_Unchecked(object sender, RoutedEventArgs e)
-        {
-            CheckBoxHandler(sender);
-        }
-
-        private void HaveEmpoweredOrAlternative_Checked(object sender, RoutedEventArgs e)
-        {
-            CheckBoxHandler(sender);
-        }
-
-        private void HaveEmpoweredOrAlternative_Unchecked(object sender, RoutedEventArgs e)
-        {
-            CheckBoxHandler(sender);
-        }
-
-        private void HavePassive_Checked(object sender, RoutedEventArgs e)
-        {
-            CheckBoxHandler(sender);
-        }
-
-        private void HavePassive_Unchecked(object sender, RoutedEventArgs e)
-        {
-            CheckBoxHandler(sender);
-        }
+        #region General Methods
         private void CheckBoxHandler(object sender)
         {
             CheckBox box = (CheckBox)sender;
@@ -253,5 +195,43 @@ namespace CustomChampionCreationTool.Views
                     break;
             }
         }
+        internal void Initialize(LibRepo.AbilitySlot slot, int typeIndex)
+        {
+            Slot = slot;
+            AbilitySlot.Text = Slot.ToString();
+            ResourceType.SelectedIndex = typeIndex;
+
+            switch (Slot)
+            {
+                case LibRepo.AbilitySlot.Passive:
+                    HaveActive.IsChecked = false;
+                    HaveEmpoweredOrAlternative.IsChecked = false;
+                    HavePassive.IsChecked = true;
+                    break;
+                case LibRepo.AbilitySlot.Q:
+                    HaveActive.IsChecked = true;
+                    HaveEmpoweredOrAlternative.IsChecked = false;
+                    HavePassive.IsChecked = false;
+                    break;
+                case LibRepo.AbilitySlot.W:
+                    HaveActive.IsChecked = true;
+                    HaveEmpoweredOrAlternative.IsChecked = false;
+                    HavePassive.IsChecked = false;
+                    break;
+                case LibRepo.AbilitySlot.E:
+                    HaveActive.IsChecked = true;
+                    HaveEmpoweredOrAlternative.IsChecked = false;
+                    HavePassive.IsChecked = false;
+                    break;
+                case LibRepo.AbilitySlot.R:
+                    HaveActive.IsChecked = true;
+                    HaveEmpoweredOrAlternative.IsChecked = false;
+                    HavePassive.IsChecked = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+        #endregion
     }
 }

@@ -39,5 +39,9 @@ namespace CCCTLibrary
 
         }
 
+        public string ToStringA()
+        {
+            return Name;
+        }
     }
 }

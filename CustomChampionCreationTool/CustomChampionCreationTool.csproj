@@ -40,11 +40,13 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -78,8 +80,8 @@
     <Compile Include="Views\NewAbility.xaml.cs">
       <DependentUpon>NewAbility.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NewChamp.xaml.cs">
-      <DependentUpon>NewChamp.xaml</DependentUpon>
+    <Compile Include="Views\NewChampion.xaml.cs">
+      <DependentUpon>NewChampion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NewResource.xaml.cs">
       <DependentUpon>NewResource.xaml</DependentUpon>
@@ -87,8 +89,8 @@
     <Compile Include="Views\ShowAbility.xaml.cs">
       <DependentUpon>ShowAbility.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ShowChamps.xaml.cs">
-      <DependentUpon>ShowChamps.xaml</DependentUpon>
+    <Compile Include="Views\ShowChampion.xaml.cs">
+      <DependentUpon>ShowChampion.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -105,7 +107,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\NewChamp.xaml">
+    <Page Include="Views\NewChampion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,7 +119,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ShowChamps.xaml">
+    <Page Include="Views\ShowChampion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,6 +205,12 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CCCTLibrary\CCCTLibrary.csproj">
+      <Project>{4F66F20B-9FF8-4226-8AEB-73E5B1919803}</Project>
+      <Name>CCCTLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\FacadeService\" />
   </ItemGroup>
   <ItemGroup>
@@ -219,12 +227,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CCCTLibrary\CCCTLibrary.csproj">
-      <Project>{4F66F20B-9FF8-4226-8AEB-73E5B1919803}</Project>
-      <Name>CCCTLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

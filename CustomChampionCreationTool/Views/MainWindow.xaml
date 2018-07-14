@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomChampionCreationTool.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="360" Width="600">
-    <Grid Margin="0,0,2,0">
-        <Grid HorizontalAlignment="Left" Height="329" VerticalAlignment="Top" Width="590">
+        Title="Custom Champion Creation Tool" Height="500" Width="800">
+    <Grid >
+        <Grid HorizontalAlignment="Left" Height="469" VerticalAlignment="Top" Width="792">
+            <!--#region Grid Definitions-->
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
@@ -19,11 +19,28 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-            <Button Content="New Champion" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Width="120" Name="NewChamp" Click="NewChamp_Click"/>
-            <Button Content="Show Champions" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Width="120" Name="ShowChamps" Click="ShowChamps_Click"/>
-            <Button Content="Exit" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Width="75" Name="Exit" Click="Exit_Click"/>
-            <Button Content="Creators" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Width="75" Name="ShowCreators" Click="ShowCreators_Click" RenderTransformOrigin="0.48,1.7"/>
+            <!--#endregion-->
+
+            <Button Content="New Champion" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Width="120" Name="NewChampion" Click="NewChampion_Click"/>
+            <Button Content="Show Champion" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Width="120" Name="ShowChampion" Click="ShowChampion_Click"/>
+            <Button Content="Delete Champion" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Width="120" Name="DeleteChampion" Click="DeleteChampion_Click"/>
+            <ComboBox HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Width="240" Name="ChampionSelction" HorizontalContentAlignment="Center"/>
+
+            <Button Content="Show Ability" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Width="120" Name="ShowAbility" Click="ShowAbility_Click"/>
+            <ComboBox HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Width="240" Name="AbilitySelction" HorizontalContentAlignment="Center"/>
+
+            <Button Content="New Resource" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Width="120" Name="NewResource" Click="NewResource_Click"/>
+            <Button Content="Show Resource" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" Width="120" Name="ShowResource" Click="ShowResource_Click"/>
+            <Button Content="Delete Resource" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" Width="120" Name="DeleteResource" Click="DeleteResource_Click"/>
+            <ComboBox HorizontalAlignment="Center" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Width="240" Name="ResourceSelction" HorizontalContentAlignment="Center"/>
+
+            <TextBlock Text="Welcome to Custom Champion Creation Tool" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Grid.ColumnSpan="3"/>
+            <Button Content="Exit" HorizontalAlignment="Center" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Width="75" Name="Exit" Click="Exit_Click"/>
+            <Button Content="Creators" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Width="75" Name="ShowCreators" Click="ShowCreators_Click" RenderTransformOrigin="0.48,1.7"/>
         </Grid>
     </Grid>
 </Window>
