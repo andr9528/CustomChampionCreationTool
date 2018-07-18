@@ -26,7 +26,7 @@ namespace CustomChampionCreationTool.Views
         public NewChampion()
         {
             InitializeComponent();
-            Repo.UpdateAvailableResources();
+            RepoPC.UpdateAvailableResources();
 
             PassiveAbilityButton.Content = "New Ability";
             QAbilityButton.Content = "New Ability";
@@ -34,26 +34,26 @@ namespace CustomChampionCreationTool.Views
             EAbilityButton.Content = "New Ability";
             RAbilityButton.Content = "New Ability";
 
-            ResourceType.ItemsSource = Repo.ResourceNamesList;
+            ResourceType.ItemsSource = RepoPC.ResourceNamesList;
             ResourceType.SelectedIndex = 0;
         }
         #region General Methods
         private Ability NewAbility(LibRepo.AbilitySlot slot, int typeIndex)
         {
             Ability output = null;
-            Repo.UpdateAvailableAbilities();
-            int before = Repo.AbilitiesList.Count;
+            RepoPC.UpdateAvailableAbilities();
+            int before = RepoPC.AbilitiesList.Count;
 
             NewAbility newAbility = new NewAbility();
             newAbility.Initialize(slot, typeIndex);
             newAbility.ShowDialog();
 
-            Repo.UpdateAvailableAbilities();
-            int after = Repo.AbilitiesList.Count;
+            RepoPC.UpdateAvailableAbilities();
+            int after = RepoPC.AbilitiesList.Count;
 
             if (after == before + 1)
             {
-                output = Repo.AbilitiesList.Last();
+                output = RepoPC.AbilitiesList.Last();
             }
             return output;
         }
@@ -61,21 +61,21 @@ namespace CustomChampionCreationTool.Views
         private Ability ShowAbility(Ability input)
         {
             Ability output = null;
-            Repo.UpdateAvailableAbilities();
-            int before = Repo.AbilitiesList.Count;
+            RepoPC.UpdateAvailableAbilities();
+            int before = RepoPC.AbilitiesList.Count;
 
             ShowAbility showAbility = new ShowAbility();
             showAbility.Initialize(input);
             showAbility.ShowDialog();
 
-            Repo.UpdateAvailableAbilities();
-            int after = Repo.AbilitiesList.Count;
+            RepoPC.UpdateAvailableAbilities();
+            int after = RepoPC.AbilitiesList.Count;
 
             try
             {
                 if (after != before - 1)
                 {
-                    output = Repo.AbilitiesList.Find(x => x.ID == input.ID);
+                    output = RepoPC.AbilitiesList.Find(x => x.ID == input.ID);
                 }
             }
             catch (ArgumentNullException)
@@ -90,17 +90,17 @@ namespace CustomChampionCreationTool.Views
         private void Create_Click(object sender, RoutedEventArgs e)
         {
             int id;
-            if (Repo.ChampionList.Count == 0)
+            if (RepoPC.ChampionList.Count == 0)
             {
                 id = 0;
             }
             else
             {
-                id = Repo.ChampionList.MaxBy(x => x.ID).ID + 1;
+                id = RepoPC.ChampionList.MaxBy(x => x.ID).ID + 1;
             }
 
             champ.ID = id;
-            champ.Resource = Repo.ResourceList[ResourceType.SelectedIndex];
+            champ.Resource = RepoPC.ResourceList[ResourceType.SelectedIndex];
             champ.Name = Name.Text;
             champ.HealthStart = Health.Text;
             champ.HealthGrowth = HealthGrowth.Text;
@@ -127,7 +127,7 @@ namespace CustomChampionCreationTool.Views
             champ.MoveSpeedStart = Movespeed.Text;
             champ.MoveSpeedGrowth = MovespeedGrowth.Text;
 
-            ReturnMessage result = Repo.NewChampion(champ);
+            ReturnMessage result = RepoPC.NewChampion(champ);
 
             if (result.WasSuccesful == true)
             {
@@ -149,23 +149,23 @@ namespace CustomChampionCreationTool.Views
         }
         private void NewResource_Click(object sender, RoutedEventArgs e)
         {
-            Repo.UpdateAvailableResources();
+            RepoPC.UpdateAvailableResources();
 
-            int before = Repo.ResourceList.Count;
+            int before = RepoPC.ResourceList.Count;
 
             NewResource newResource = new NewResource();
             newResource.ShowDialog();
 
-            Repo.UpdateAvailableResources();
+            RepoPC.UpdateAvailableResources();
 
-            int after = Repo.ResourceList.Count;
+            int after = RepoPC.ResourceList.Count;
 
             if (after == before + 1)
             {
-                Repo.UpdateAvailableResources();
+                RepoPC.UpdateAvailableResources();
                 ResourceType.ItemsSource = new string[] { "You Can't See Me" };
-                ResourceType.ItemsSource = Repo.ResourceNamesList;
-                ResourceType.SelectedIndex = Repo.ResourceList.Count - 1;
+                ResourceType.ItemsSource = RepoPC.ResourceNamesList;
+                ResourceType.SelectedIndex = RepoPC.ResourceList.Count - 1;
             }
             else
             {
@@ -175,10 +175,10 @@ namespace CustomChampionCreationTool.Views
         private void ShowResource_Click(object sender, RoutedEventArgs e)
         {
             ShowResource show = new ShowResource();
-            show.Initialize(Repo.ResourceList[ResourceType.SelectedIndex]);
+            show.Initialize(RepoPC.ResourceList[ResourceType.SelectedIndex]);
 
             show.ShowDialog();
-            Repo.UpdateAvailableResources();
+            RepoPC.UpdateAvailableResources();
         }
         private void DeleteResource_Click(object sender, RoutedEventArgs e)
         {
@@ -190,11 +190,11 @@ namespace CustomChampionCreationTool.Views
             {
                 if (result == MessageBoxResult.Yes)
                 {
-                    returnMessage = Repo.DeleteResource(Repo.ResourceList[ResourceType.SelectedIndex]);
+                    returnMessage = RepoPC.DeleteResource(RepoPC.ResourceList[ResourceType.SelectedIndex]);
                     ResourceType.ItemsSource = new string[] { "You Can't See Me" };
 
-                    Repo.UpdateAvailableResources();
-                    ResourceType.ItemsSource = Repo.ResourceNamesList;
+                    RepoPC.UpdateAvailableResources();
+                    ResourceType.ItemsSource = RepoPC.ResourceNamesList;
                     ResourceType.SelectedIndex = indexBefore - 1;
                 }
             }

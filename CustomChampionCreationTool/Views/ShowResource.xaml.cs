@@ -46,7 +46,7 @@ namespace CustomChampionCreationTool.Views
                     resource.MinValue = int.Parse(MinValue.Text);
                     resource.MaxedAtStart = (bool)StartMaxed.IsChecked;
 
-                    Repo.UpdateResource(resource);
+                    RepoPC.UpdateResource(resource);
 
                     Close();
                 }

@@ -27,8 +27,8 @@ namespace CustomChampionCreationTool.Views
         {
             InitializeComponent();
 
-            Repo.UpdateAvailableResources();
-            ResourceType.ItemsSource = Repo.ResourceNamesList;
+            RepoPC.UpdateAvailableResources();
+            ResourceType.ItemsSource = RepoPC.ResourceNamesList;
 
             HaveActive.IsChecked = true;
             HaveEmpoweredOrAlternative.IsChecked = true;
@@ -76,13 +76,13 @@ namespace CustomChampionCreationTool.Views
             try
             {
                 int id;
-                if (Repo.AbilitiesList.Count == 0)
+                if (RepoPC.AbilitiesList.Count == 0)
                 {
                     id = 0;
                 }
                 else
                 {
-                    id = Repo.AbilitiesList.MaxBy(x => x.ID).ID + 1;
+                    id = RepoPC.AbilitiesList.MaxBy(x => x.ID).ID + 1;
                 }
 
                 Ability dummy = new Ability()
@@ -90,7 +90,7 @@ namespace CustomChampionCreationTool.Views
                     Name = AbilityName.Text,
                     ID = id,
                     Slot = Slot,
-                    ResourceUse = Repo.ResourceList[ResourceType.SelectedIndex],
+                    ResourceUse = RepoPC.ResourceList[ResourceType.SelectedIndex],
                     HaveActive = (bool)HaveActive.IsChecked,
                     IsToogleAble = (bool)IsToogleAble.IsChecked,
                     HaveEmpoweredOrAlternative = (bool)HaveEmpoweredOrAlternative.IsChecked,
@@ -110,7 +110,7 @@ namespace CustomChampionCreationTool.Views
                     DamagePas = DamagePas.Text,
                     CooldownPas = CooldownPas.Text
                 };
-                ReturnMessage result = Repo.NewAbility(dummy);
+                ReturnMessage result = RepoPC.NewAbility(dummy);
 
                 Close();
             }

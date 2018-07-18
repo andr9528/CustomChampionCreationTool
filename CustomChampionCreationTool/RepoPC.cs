@@ -4,7 +4,7 @@ using CCCTLibrary;
 
 namespace CustomChampionCreationTool
 {
-    public static class Repo
+    public static class RepoPC
     {
         public static FacadeService.FacadeClient Facade = new FacadeService.FacadeClient();
 

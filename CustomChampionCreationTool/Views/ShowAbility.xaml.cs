@@ -26,8 +26,8 @@ namespace CustomChampionCreationTool.Views
         {
             InitializeComponent();
 
-            Repo.UpdateAvailableResources();
-            ResourceType.ItemsSource = Repo.ResourceNamesList;
+            RepoPC.UpdateAvailableResources();
+            ResourceType.ItemsSource = RepoPC.ResourceNamesList;
 
             GoodExit.Content = "OK";
             BadExit.Visibility = Visibility.Hidden;
@@ -49,7 +49,7 @@ namespace CustomChampionCreationTool.Views
                 try
                 {
                     ability.Name = AbilityName.Text;
-                    ability.ResourceUse = Repo.ResourceList[ResourceType.SelectedIndex];
+                    ability.ResourceUse = RepoPC.ResourceList[ResourceType.SelectedIndex];
                     ability.HaveActive = (bool)HaveActive.IsChecked;
                     ability.IsToogleAble = (bool)IsToogleAble.IsChecked;
                     ability.HaveEmpoweredOrAlternative = (bool)HaveEmpoweredOrAlternative.IsChecked;
@@ -69,7 +69,7 @@ namespace CustomChampionCreationTool.Views
                     ability.DamagePas = DamagePas.Text;
                     ability.CooldownPas = CooldownPas.Text;
 
-                    Repo.UpdateAbility(ability);
+                    RepoPC.UpdateAbility(ability);
 
                     Close();
                 }
@@ -94,7 +94,7 @@ namespace CustomChampionCreationTool.Views
 
             if (result == MessageBoxResult.Yes)
             {
-                Repo.DeleteAbility(ability);
+                RepoPC.DeleteAbility(ability);
                 Close();
             }
         }
@@ -168,7 +168,7 @@ namespace CustomChampionCreationTool.Views
 
             AbilitySlot.Text = ability.Slot.ToString();
             AbilityName.Text = ability.Name;
-            ResourceType.SelectedIndex = Repo.ResourceNamesList.IndexOf(ability.ResourceUse.Name);
+            ResourceType.SelectedIndex = RepoPC.ResourceNamesList.IndexOf(ability.ResourceUse.Name);
             HaveActive.IsChecked = ability.HaveActive;
             HaveEmpoweredOrAlternative.IsChecked = ability.HaveEmpoweredOrAlternative;
             HavePassive.IsChecked = ability.HavePassive;

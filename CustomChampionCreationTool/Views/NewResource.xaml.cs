@@ -25,7 +25,7 @@ namespace CustomChampionCreationTool.Views
         public NewResource()
         {
             InitializeComponent();
-            Repo.UpdateAvailableResources();
+            RepoPC.UpdateAvailableResources();
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
@@ -33,13 +33,13 @@ namespace CustomChampionCreationTool.Views
             try
             {
                 int id;
-                if (Repo.ResourceList.Count == 0)
+                if (RepoPC.ResourceList.Count == 0)
                 {
                     id = 0;
                 }
                 else
                 {
-                    id = Repo.ResourceList.MaxBy(x => x.ID).ID + 1;
+                    id = RepoPC.ResourceList.MaxBy(x => x.ID).ID + 1;
                 }
 
                 Resource dummy = new Resource()
@@ -50,7 +50,7 @@ namespace CustomChampionCreationTool.Views
                     MaxedAtStart = (bool)StartMaxed.IsChecked,
                     ID = id
                 };
-                ReturnMessage result = Repo.NewResource(dummy);
+                ReturnMessage result = RepoPC.NewResource(dummy);
 
                 Close();
             }

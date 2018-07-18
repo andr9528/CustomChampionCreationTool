@@ -24,11 +24,11 @@ namespace CustomChampionCreationTool.Views
         {
             InitializeComponent();
 
-            List<ReturnMessage> messages = Repo.Initialize();
+            List<ReturnMessage> messages = RepoPC.Initialize();
 
-            ResourceSelction.ItemsSource = Repo.ResourceNamesList;
-            AbilitySelction.ItemsSource = Repo.AbilityNamesList;
-            ChampionSelction.ItemsSource = Repo.ChampionNamesList;
+            ResourceSelction.ItemsSource = RepoPC.ResourceNamesList;
+            AbilitySelction.ItemsSource = RepoPC.AbilityNamesList;
+            ChampionSelction.ItemsSource = RepoPC.ChampionNamesList;
 
             ResourceSelction.SelectedIndex = 0;
             AbilitySelction.SelectedIndex = 0;
@@ -70,7 +70,7 @@ namespace CustomChampionCreationTool.Views
         #region General Methods
         private void UpdateView()
         {
-            if (Repo.ChampionList.Count == 0)
+            if (RepoPC.ChampionList.Count == 0)
             {
                 ShowChampion.IsEnabled = false;
                 DeleteChampion.IsEnabled = false;
@@ -80,7 +80,7 @@ namespace CustomChampionCreationTool.Views
                 ShowChampion.IsEnabled = true;
                 DeleteChampion.IsEnabled = true;
             }
-            if (Repo.AbilitiesList.Count == 0)
+            if (RepoPC.AbilitiesList.Count == 0)
             {
                 ShowAbility.IsEnabled = false;
             }
@@ -88,7 +88,7 @@ namespace CustomChampionCreationTool.Views
             {
                 ShowAbility.IsEnabled = true;
             }
-            if (Repo.ResourceList.Count == 0)
+            if (RepoPC.ResourceList.Count == 0)
             {
                 ShowResource.IsEnabled = false;
                 DeleteResource.IsEnabled = false;
@@ -131,11 +131,11 @@ namespace CustomChampionCreationTool.Views
             {
                 if (result == MessageBoxResult.Yes)
                 {
-                    Repo.DeleteChampion(Repo.ChampionList[indexBefore]);
+                    RepoPC.DeleteChampion(RepoPC.ChampionList[indexBefore]);
                     ChampionSelction.ItemsSource = new string[] { "You Can't See Me" };
 
-                    Repo.UpdateAvailableChampions();
-                    ChampionSelction.ItemsSource = Repo.ChampionNamesList;
+                    RepoPC.UpdateAvailableChampions();
+                    ChampionSelction.ItemsSource = RepoPC.ChampionNamesList;
                     ChampionSelction.SelectedIndex = indexBefore - 1;
 
                     UpdateView();
@@ -149,22 +149,22 @@ namespace CustomChampionCreationTool.Views
         
         private void NewChampion_Click(object sender, RoutedEventArgs e)
         {
-            Repo.UpdateAvailableChampions();
+            RepoPC.UpdateAvailableChampions();
 
-            int before = Repo.ChampionList.Count;
+            int before = RepoPC.ChampionList.Count;
 
             NewChampion newchamp = new NewChampion();
             newchamp.ShowDialog();
 
-            Repo.UpdateAvailableChampions();
+            RepoPC.UpdateAvailableChampions();
 
-            int after = Repo.ChampionList.Count;
+            int after = RepoPC.ChampionList.Count;
 
             if (after == before + 1)
             {
                 ChampionSelction.ItemsSource = new string[] { "You Can't See Me" };
-                ChampionSelction.ItemsSource = Repo.ResourceNamesList;
-                ChampionSelction.SelectedIndex = Repo.ResourceList.Count - 1;
+                ChampionSelction.ItemsSource = RepoPC.ResourceNamesList;
+                ChampionSelction.SelectedIndex = RepoPC.ResourceList.Count - 1;
             }
             else
             {
@@ -177,20 +177,20 @@ namespace CustomChampionCreationTool.Views
         #region Ability
         private void ShowAbility_Click(object sender, RoutedEventArgs e)
         {
-            int before = Repo.AbilitiesList.Count;
+            int before = RepoPC.AbilitiesList.Count;
             int indexBefore = AbilitySelction.SelectedIndex;
 
             ShowAbility showAbility = new ShowAbility();
-            showAbility.Initialize(Repo.AbilitiesList[indexBefore]);
+            showAbility.Initialize(RepoPC.AbilitiesList[indexBefore]);
             showAbility.ShowDialog();
 
-            Repo.UpdateAvailableAbilities();
-            int after = Repo.AbilitiesList.Count;
+            RepoPC.UpdateAvailableAbilities();
+            int after = RepoPC.AbilitiesList.Count;
 
             if (after == before - 1)
             {
                 AbilitySelction.ItemsSource = new string[] { "You Can't See Me" };
-                AbilitySelction.ItemsSource = Repo.AbilityNamesList;
+                AbilitySelction.ItemsSource = RepoPC.AbilityNamesList;
                 AbilitySelction.SelectedIndex = indexBefore - 1;
             }
             UpdateView();
@@ -201,10 +201,10 @@ namespace CustomChampionCreationTool.Views
         private void ShowResource_Click(object sender, RoutedEventArgs e)
         {
             ShowResource show = new ShowResource();
-            show.Initialize(Repo.ResourceList[ResourceSelction.SelectedIndex]);
+            show.Initialize(RepoPC.ResourceList[ResourceSelction.SelectedIndex]);
 
             show.ShowDialog();
-            Repo.UpdateAvailableResources();
+            RepoPC.UpdateAvailableResources();
         }
 
         private void DeleteResource_Click(object sender, RoutedEventArgs e)
@@ -216,11 +216,11 @@ namespace CustomChampionCreationTool.Views
             {
                 if (result == MessageBoxResult.Yes)
                 {
-                    Repo.DeleteResource(Repo.ResourceList[indexBefore]);
+                    RepoPC.DeleteResource(RepoPC.ResourceList[indexBefore]);
                     ResourceSelction.ItemsSource = new string[] { "You Can't See Me" };
 
-                    Repo.UpdateAvailableResources();
-                    ResourceSelction.ItemsSource = Repo.ResourceNamesList;
+                    RepoPC.UpdateAvailableResources();
+                    ResourceSelction.ItemsSource = RepoPC.ResourceNamesList;
                     ResourceSelction.SelectedIndex = indexBefore - 1;
 
                     UpdateView();
@@ -234,22 +234,22 @@ namespace CustomChampionCreationTool.Views
 
         private void NewResource_Click(object sender, RoutedEventArgs e)
         {
-            Repo.UpdateAvailableResources();
+            RepoPC.UpdateAvailableResources();
 
-            int before = Repo.ResourceList.Count;
+            int before = RepoPC.ResourceList.Count;
 
             NewResource newResource = new NewResource();
             newResource.ShowDialog();
 
-            Repo.UpdateAvailableResources();
+            RepoPC.UpdateAvailableResources();
 
-            int after = Repo.ResourceList.Count;
+            int after = RepoPC.ResourceList.Count;
 
             if (after == before + 1)
             {
                 ResourceSelction.ItemsSource = new string[] { "You Can't See Me" };
-                ResourceSelction.ItemsSource = Repo.ResourceNamesList;
-                ResourceSelction.SelectedIndex = Repo.ResourceList.Count - 1;
+                ResourceSelction.ItemsSource = RepoPC.ResourceNamesList;
+                ResourceSelction.SelectedIndex = RepoPC.ResourceList.Count - 1;
 
                 UpdateView();
             }
