@@ -27,6 +27,7 @@ General:
 					Key is one use
 					Secoundary console application --> CCCT Key Generator 
 						--> Generates X amount of key directly put in to the database every time it is run
+	Write Summary / Comments for all Methods.
 
 Database:
 	{1} New Table to contain Object 'User'
@@ -45,6 +46,8 @@ Object:
 			Float: Version
 	{1}	Champion, Ability, Resource New Value
 			Int: CreatorID
+	Champion New Value
+		String: Lore
 View:
 	<M> Fully Implement Champion --> Show
 	{1} Login View
