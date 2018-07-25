@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_width="match_parent">
+                    <TextView
+                        android:text="Name"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:layout_margin="10dp" />
+                    <TextView
+                        android:id="@+id/champName"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="10"
+                        android:textAlignment="center"
+                        android:layout_margin="10dp" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent">
+                    <TextView
+                        android:text="Resource"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:layout_margin="10dp" />
+                    <Button
+                        android:id="@+id/champResourceBnt"
+                        android:layout_width="fill_parent"
+                        android:layout_margin="10dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="10" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent">
+                    <TextView
+                        android:text="Passive Ability"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:layout_margin="10dp" />
+                    <Button
+                        android:id="@+id/champPassiveBtn"
+                        android:layout_width="fill_parent"
+                        android:layout_margin="10dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="10" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent">
+                    <TextView
+                        android:text="Q Ability"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:layout_margin="10dp" />
+                    <Button
+                        android:id="@+id/champQBtn"
+                        android:layout_width="fill_parent"
+                        android:layout_margin="10dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="10" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent">
+                    <TextView
+                        android:text="W Ability"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:layout_margin="10dp" />
+                    <Button
+                        android:id="@+id/champWBtn"
+                        android:layout_width="fill_parent"
+                        android:layout_margin="10dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="10" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent">
+                    <TextView
+                        android:text="E Ability"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:layout_margin="10dp" />
+                    <Button
+                        android:id="@+id/champEBtn"
+                        android:layout_width="fill_parent"
+                        android:layout_margin="10dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="10" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent">
+                    <TextView
+                        android:text="R Ability"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:textAlignment="center"
+                        android:layout_margin="10dp" />
+                    <Button
+                        android:id="@+id/champRBtn"
+                        android:layout_width="fill_parent"
+                        android:layout_margin="10dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="10" />
+                </TableRow>
+            </TableLayout>
+        <!--Stats Table-->
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:text="Start"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:text="Growth"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:text="Health"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champHealthStart"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champHealthGrowth"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:text="Health Regeneration"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champHealthRegenStart"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champHealthRegenGrowth"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:text="Resource"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champResourceStart"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champResourceGrowth"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:text="Resource Regeneration"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champResourceRegenStart"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champResourceRegenGrowth"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:text="Attack Damage"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champAttackDamageStart"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champAttackDamageGrowth"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:text="Ability Power"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champAbilityPowerStart"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champAbilityPowerGrowth"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:text="Attack Speed"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champAttackSpeedStart"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champAttackSpeedGrowth"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:text="Range"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champRangeStart"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champRangeGrowth"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:text="Critical Strike Chance"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champCSCStart"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champCSCGrowth"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:text="Armor"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champArmorStart"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champArmorGrowth"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:text="Magic Resist"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champMagicResistStart"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champMagicResistGrowth"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_weight="1"
+                        android:text="Move Speed"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champMoveSpeedStart"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/champMoveSpeedGrowth"
+                        android:layout_width="fill_parent"
+                        android:layout_weight="4"
+                        android:textAlignment="center" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
